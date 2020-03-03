@@ -1,2 +1,4 @@
-Testuoju git. -Symuciakas
+Testuoju git push ir pull.
+
+-Symuciakas
 P.S. get shit on Audriau
