@@ -15,15 +15,15 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        print(currentHealth);
         if(currentHealth <= 0)
         {
-            Die();
+            Death();
         }
     }
 
-    void Die()
+    void Death()
     {
-        print("Cuntified");
+        Destroy(gameObject);
+        print("Dead");
     }
 }
