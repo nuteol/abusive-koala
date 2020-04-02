@@ -34,6 +34,10 @@ public class playercontroller : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
+        if (rb.velocity.y == 0)
+        {
+            animator.SetBool("IsJumping", false);
+        }
         if (Input.GetKey(KeyCode.W) && rb.velocity.y == 0)//coll.IsTouchingLayers(ground)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -43,7 +47,7 @@ public class playercontroller : MonoBehaviour
     }
     void OnLanding()
     {
-        animator.SetBool("IsJumping", false);
+        
     }
 
 }
