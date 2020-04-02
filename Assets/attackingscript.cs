@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class attackingscript : MonoBehaviour
 {
-    public LayerMask whatIsEnemies;
-    public Transform attackPos;
+    [SerializeField] private LayerMask whatIsEnemies;
+    //[SerializeField] private LayerMask Cardboards;
+    //[SerializeField] private LayerMask Glass;
+    //[SerializeField] private LayerMask Metal;
+    private Transform attackPos;
     private abstract class weapon
     {
         public string name;
         public float nextAttackTime = 0f;
         public int damage;
+        //public int damagePaper;
+        //public int damageGlass;
+        //public int damageMetal;
         public float attackRange;
         public abstract void weaponAttack(Transform ap, LayerMask wie);
     }
@@ -38,6 +44,11 @@ public class attackingscript : MonoBehaviour
                 {
 ;                    enemy.GetComponent<Enemy>().TakeDamage(damage);
                 }
+                /*Collider2D[] paperEnemiesToDamage = Physics2D.OverlapCircleAll(ap.position, attackRange, wipe);
+                foreach (Collider2D enemy in paperEnemiesToDamage)
+                {
+                    ; enemy.GetComponent<Enemy>().TakeDamage(damagePaper);
+                }*/
                 nextAttackTime = Time.time + 1f / 2;
             }
         }
@@ -48,6 +59,7 @@ public class attackingscript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        attackPos = GetComponent<Transform>();
         cardboardcutter = new cardboardCutter();
     }
 
