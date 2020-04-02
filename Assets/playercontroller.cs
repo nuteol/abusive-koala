@@ -7,6 +7,7 @@ public class playercontroller : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private Collider2D coll;
+    public KeyCode equip1, attack1;
 
     public float runSpeed = 20f;
     public float jumpForce = 20f;
@@ -42,6 +43,14 @@ public class playercontroller : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetBool("IsJumping", true);
+        }
+        if (Input.GetKeyDown(equip1))
+        {
+            animator.SetBool("Weapon1Equipped", true);
+        }
+        if (Input.GetKeyDown(attack1))
+        {
+            animator.SetTrigger("Weapon1Attack");
         }
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
     }

@@ -9,6 +9,8 @@ public class attackingscript : MonoBehaviour
     //[SerializeField] private LayerMask Glass;
     //[SerializeField] private LayerMask Metal;
     private Transform attackPos;
+    
+    
     private abstract class weapon
     {
         public string name;
@@ -74,5 +76,6 @@ public class attackingscript : MonoBehaviour
         {
             currentWeapon.weaponAttack(attackPos, whatIsEnemies);
         }
+        
     }
 }
