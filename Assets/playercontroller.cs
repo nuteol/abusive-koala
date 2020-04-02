@@ -12,6 +12,10 @@ public class playercontroller : MonoBehaviour
     private void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        if (rb.velocity.y == 0)
+        {
+            animator.SetBool("IsJumping", false);
+        }
         if (Input.GetKey(KeyCode.A) /*&& rb.velocity.y == 0*/)
         {
             rb.velocity = new Vector2(-5, rb.velocity.y);
@@ -36,7 +40,7 @@ public class playercontroller : MonoBehaviour
     }
     void OnLanding()
     {
-        animator.SetBool("IsJumping", false);
+        
     }
 
 }
