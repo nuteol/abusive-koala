@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour
 
     void Death()
     {
+        //Death anime here
+        //End death anim
         Destroy(gameObject);
     }
 }
