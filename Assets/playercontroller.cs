@@ -11,17 +11,20 @@ public class playercontroller : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private Collider2D coll;
-    private Transform player;
+    private Transform playerT;
     public KeyCode equip1, attack1;
 
     public float runSpeed = 20f;
     public float jumpForce = 20f;
     float horizontalMove = 0f;
 
-    bool lockUp = false;
-    bool lockDown = false;
-    bool lockLeft = false;
-    bool lockRight = false;
+    private bool lockUp = false;
+    private bool lockDown = false;
+    private bool lockLeft = false;
+    private bool lockRight = false;
+
+    private float damagedtime;
+    private bool takingDamage;
 
     //[SerializeField] private LayerMask ground;
     //[SerializeField] private LayerMask wall;
@@ -31,47 +34,44 @@ public class playercontroller : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
-        player = GetComponent<Transform>();
+        playerT = GetComponent<Transform>();
+
+        damagedtime = Time.time;
     }
 
     private void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-        if (horizontalMove > 0)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        }
-        if (horizontalMove < 0)
-        {
-            transform.eulerAngles = new Vector3(0, 180, 0);
-        }
-        if (rb.velocity.y == 0)
-        {
-            animator.SetBool("IsJumping", false);
-        }
-        if (Input.GetKey(KeyCode.W) && rb.velocity.y == 0 && !lockUp)//coll.IsTouchingLayers(ground) //rb.velocity.y <= 1.192094e-07 && rb.velocity.y >= -1.192094e-07
+        animator.SetBool("IsJumping", rb.velocity.y != 0);
+        takingDamage = (damagedtime >= Time.time);
+        if (Input.GetKey(KeyCode.W) && rb.velocity.y == 0 && !lockUp && !takingDamage)//coll.IsTouchingLayers(ground) //rb.velocity.y <= 1.192094e-07 && rb.velocity.y >= -1.192094e-07
         {
             lockUp = true;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetBool("IsJumping", true);
         }
-        if (Input.GetKey(KeyCode.A) && !lockLeft)
+        if (Input.GetKey(KeyCode.A) && !lockLeft && !takingDamage)
         {
+            transform.eulerAngles = new Vector3(0, 180, 0);
             rb.velocity = new Vector2(-runSpeed, rb.velocity.y);
             lockRight = false;
         }
         else
         {
-            rb.velocity = new Vector2(0, rb.velocity.y);
+            if (!Input.GetKey(KeyCode.D) && !takingDamage)
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
         }
-        if (Input.GetKey(KeyCode.D) && !lockRight)
+        if (Input.GetKey(KeyCode.D) && !lockRight && !takingDamage)
         {
+            transform.eulerAngles = new Vector3(0, 0, 0);
             rb.velocity = new Vector2(runSpeed, rb.velocity.y);
             lockLeft = false;
         }
         else
         {
-            if(!Input.GetKey(KeyCode.A))
+            if(!Input.GetKey(KeyCode.A) && !takingDamage)
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
@@ -92,6 +92,7 @@ public class playercontroller : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("Death"))
         {
+            //Play animation or something
             Death();
         }
         if (collision.gameObject.tag.Equals("Terrain") && collision.contacts[0].point.y == collision.contacts[1].point.y)
@@ -103,11 +104,11 @@ public class playercontroller : MonoBehaviour
         if (collision.gameObject.tag.Equals("Terrain") && collision.contacts[0].point.y != collision.contacts[1].point.y)
         {
             
-            if (collision.contacts[0].point.x < player.position.x)
+            if (collision.contacts[0].point.x < playerT.position.x)
             {
                 lockLeft = true;
             }
-            if (collision.contacts[1].point.x > player.position.x)
+            if (collision.contacts[1].point.x > playerT.position.x)
             {
                 lockRight = true;
             }
@@ -115,7 +116,35 @@ public class playercontroller : MonoBehaviour
         }
     }
 
-    void Death()
+    public void TakeDamage(Transform enemyT)
+    {
+        currentHearts--;
+        damagedtime = Time.time + 0.4f;
+        takingDamage = true;
+        if(enemyT.position.x < playerT.position.x)
+        {
+            rb.velocity = new Vector2(5*(playerT.position.x - enemyT.position.x), 10);
+        }
+        else
+        {
+            if (enemyT.position.x > playerT.position.x)
+            {
+                rb.velocity = new Vector2(-5 *(enemyT.position.x - playerT.position.x), 10);
+            }
+            else
+            {
+                rb.velocity = new Vector2(rb.velocity.x, 10);
+            }
+        }
+        
+        if(currentHearts <= 0)
+        {
+            //Play animation or something
+            Death();
+        }
+    }
+
+    private void Death()
     {
         //GUI Transition
         SceneManager.LoadScene("BasicScene1");
