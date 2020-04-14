@@ -7,6 +7,7 @@ TagManager:
   - Death
   - Terrain
   - Avatar
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -47,9 +48,9 @@ TagManager:
   - name: Background
     uniqueID: 1413255071
     locked: 0
-  - name: Player
-    uniqueID: 1231162997
-    locked: 0
   - name: Foreground
     uniqueID: 1441825651
+    locked: 0
+  - name: Player
+    uniqueID: 1231162997
     locked: 0

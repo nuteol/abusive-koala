@@ -55,7 +55,6 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Avatar"))
         {
-            print("Lmao");
             collision.gameObject.GetComponent<playercontroller>().TakeDamage(enemyT);
         }
     }

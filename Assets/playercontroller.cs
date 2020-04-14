@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class playercontroller : MonoBehaviour
 {
     private int maxHearts = 3;
-    private int currentHearts = 3;
+    private int currentHearts;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -19,7 +19,7 @@ public class playercontroller : MonoBehaviour
     float horizontalMove = 0f;
 
     private bool lockUp = false;
-    private bool lockDown = false;
+    //private bool lockDown = false;
     private bool lockLeft = false;
     private bool lockRight = false;
 
@@ -31,6 +31,7 @@ public class playercontroller : MonoBehaviour
 
     private void Start()
     {
+        currentHearts = maxHearts;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
