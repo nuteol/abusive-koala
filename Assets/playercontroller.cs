@@ -8,7 +8,6 @@ public class playercontroller : MonoBehaviour
     public int maxHearts = 3;
     public int currentHearts;
     public HealthBar hp;
-
     public SpecialAttack spec;
 
     private Rigidbody2D rb;
@@ -17,27 +16,31 @@ public class playercontroller : MonoBehaviour
     private Transform playerT;
     public KeyCode equip1, attack1;
 
-    public float runSpeed = 20f;
-    public float jumpForce = 20f;
-    float horizontalMove = 0f;
-
-    private bool lockUp = false;
-    //private bool lockDown = false;
-    private bool lockLeft = false;
-    private bool lockRight = false;
+    public float runSpeed;
+    public float jumpForce;
+    private float horizontalMove = 0f;
+    private bool facingRight = true;
+    private bool isGrounded;
+    public Transform groundCheck;
+    public float checkradius;
+    public LayerMask whatIsGround;
+    private int extraJumps;
+    public int extraJumpValue;
 
     private float damagedtime;
     private bool takingDamage;
 
-    //[SerializeField] private LayerMask ground;
-    //[SerializeField] private LayerMask wall;
+
 
     private void Start()
     {
+        extraJumps = extraJumpValue;
+
         spec.SetMaxSpecial(100);
         spec.SetSpecial(0);
         currentHearts = maxHearts;
         hp.SetMaxHealth(maxHearts);
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
@@ -48,41 +51,25 @@ public class playercontroller : MonoBehaviour
 
     private void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         animator.SetBool("IsJumping", rb.velocity.y != 0);
         takingDamage = (damagedtime >= Time.time);
-        if (Input.GetKey(KeyCode.W) && rb.velocity.y == 0 && !lockUp && !takingDamage)//coll.IsTouchingLayers(ground) //rb.velocity.y <= 1.192094e-07 && rb.velocity.y >= -1.192094e-07
+
+        if(isGrounded)
         {
-            lockUp = true;
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            extraJumps = extraJumpValue;
+        }
+        if (Input.GetKeyDown(KeyCode.W) && extraJumps > 0)
+        {
+            rb.velocity = Vector2.up * jumpForce;
+            extraJumps--;
             animator.SetBool("IsJumping", true);
         }
-        if (Input.GetKey(KeyCode.A) && !lockLeft && !takingDamage)
+        else if(Input.GetKeyDown(KeyCode.W) && extraJumps == 0 && isGrounded)
         {
-            transform.eulerAngles = new Vector3(0, 180, 0);
-            rb.velocity = new Vector2(-runSpeed, rb.velocity.y);
-            lockRight = false;
+            rb.velocity = Vector2.up * jumpForce;
+            animator.SetBool("IsJumping", true);
         }
-        else
-        {
-            if (!Input.GetKey(KeyCode.D) && !takingDamage)
-            {
-                rb.velocity = new Vector2(0, rb.velocity.y);
-            }
-        }
-        if (Input.GetKey(KeyCode.D) && !lockRight && !takingDamage)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            rb.velocity = new Vector2(runSpeed, rb.velocity.y);
-            lockLeft = false;
-        }
-        else
-        {
-            if(!Input.GetKey(KeyCode.A) && !takingDamage)
-            {
-                rb.velocity = new Vector2(0, rb.velocity.y);
-            }
-        }
+
         if (Input.GetKeyDown(equip1))
         {
             animator.SetBool("Weapon1Equipped", true);
@@ -91,35 +78,39 @@ public class playercontroller : MonoBehaviour
         {
             animator.SetTrigger("Weapon1Attack");
         }
+
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+    }
+
+    private void FixedUpdate()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkradius, whatIsGround);
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        rb.velocity = new Vector2(horizontalMove, rb.velocity.y);
+        if(facingRight == false && horizontalMove > 0)
+        {
+            Flip();
+        }
+        else if(facingRight && horizontalMove < 0)
+        {
+            Flip();
+        }
+    }
+
+    void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 Scaler = transform.localScale;
+        Scaler.x *= -1;
+        transform.localScale = Scaler;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
         if (collision.gameObject.tag.Equals("Death"))
         {
             //Play animation or something
             Death();
-        }
-        if (collision.gameObject.tag.Equals("Terrain") && collision.contacts[0].point.y == collision.contacts[1].point.y)
-        {
-            lockUp = false;
-            lockLeft = false;
-            lockRight = false;
-        }
-        if (collision.gameObject.tag.Equals("Terrain") && collision.contacts[0].point.y != collision.contacts[1].point.y)
-        {
-            
-            if (collision.contacts[0].point.x < playerT.position.x)
-            {
-                lockLeft = true;
-            }
-            if (collision.contacts[1].point.x > playerT.position.x)
-            {
-                lockRight = true;
-            }
-            lockUp = true;
         }
     }
 
