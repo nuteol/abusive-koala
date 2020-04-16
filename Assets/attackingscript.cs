@@ -32,7 +32,7 @@ public class attackingscript : MonoBehaviour
         public cardboardCutter()
         {
             name = "Cardboard Cutter";
-            damagePaper = 10;
+            damagePaper = 33;
             damageGlass = 1;
             damageMetal = 0;
             attackRange = 1.5f;

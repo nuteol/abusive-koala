@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     private int maxHealth = 10;
     private int currentHealth;
-
+    public SpecialAttack spec;
     private bool moveRight = true;
     private Rigidbody2D rb;
     private Transform enemyT;
@@ -49,6 +49,15 @@ public class Enemy : MonoBehaviour
         {
             Death();
         }
+        if (spec.GetSpecAmount()+damage < 100)
+        {
+            spec.AddSpecial(damage);
+        }
+        else
+        {
+            spec.SetSpecial(100);
+        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -12,11 +12,13 @@ public class DialogueScript : MonoBehaviour
 
     public GameObject continueButton;
     public GameObject textPanel;
+    public GameObject background;
 
     private void Start()
     {
         continueButton.SetActive(false);
         textPanel.SetActive(false);
+        background.SetActive(false);
     }
 
     private void Update()
@@ -27,6 +29,7 @@ public class DialogueScript : MonoBehaviour
     public void BeginDialogue()
     {
         textPanel.SetActive(true);
+        background.SetActive(true);
         index = 0;
         textDisplay.text = "";
         StartCoroutine(Type());
@@ -45,6 +48,7 @@ public class DialogueScript : MonoBehaviour
         {
             textDisplay.text = "";
             continueButton.SetActive(false);
+            background.SetActive(false);
             //Dialogue finihed
         }
     }
@@ -69,5 +73,6 @@ public class DialogueScript : MonoBehaviour
     {
         continueButton.SetActive(false);
         textPanel.SetActive(false);
+        background.SetActive(false);
     }
 }

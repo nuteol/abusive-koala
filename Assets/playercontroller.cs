@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class playercontroller : MonoBehaviour
 {
-    private int maxHearts = 3;
-    private int currentHearts;
+    public int maxHearts = 3;
+    public int currentHearts;
+    public HealthBar hp;
+
+    public SpecialAttack spec;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -31,7 +34,10 @@ public class playercontroller : MonoBehaviour
 
     private void Start()
     {
+        spec.SetMaxSpecial(100);
+        spec.SetSpecial(0);
         currentHearts = maxHearts;
+        hp.SetMaxHealth(maxHearts);
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
@@ -120,9 +126,10 @@ public class playercontroller : MonoBehaviour
     public void TakeDamage(Transform enemyT)
     {
         currentHearts--;
+        hp.SetHealth(currentHearts);
         damagedtime = Time.time + 0.4f;
         takingDamage = true;
-        if(enemyT.position.x < playerT.position.x)
+        if (enemyT.position.x < playerT.position.x)
         {
             rb.velocity = new Vector2(5*(playerT.position.x - enemyT.position.x), 10);
         }
