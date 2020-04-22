@@ -51,7 +51,7 @@ public class playercontroller : MonoBehaviour
 
     private void Update()
     {
-        animator.SetBool("IsJumping", rb.velocity.y != 0);
+        //animator.SetBool("IsJumping", rb.velocity.y != 0);
         takingDamage = (damagedtime >= Time.time);
 
         if(isGrounded)
@@ -68,6 +68,15 @@ public class playercontroller : MonoBehaviour
         {
             rb.velocity = Vector2.up * jumpForce;
             animator.SetBool("IsJumping", true);
+        }
+        if(rb.velocity.y < -5 && !isGrounded)
+        {
+            animator.SetBool("IsJumping", false);
+            animator.SetBool("IsFalling", true);
+        }
+        else if(rb.velocity.y == 0)
+        {
+            animator.SetBool("IsFalling", false);
         }
 
         if (Input.GetKeyDown(equip1))
