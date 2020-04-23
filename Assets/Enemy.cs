@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     private Transform enemyT;
     public float moveSpace;
     private float patrolCenter;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -27,10 +28,12 @@ public class Enemy : MonoBehaviour
         if(moveRight)
         {
             rb.velocity = new Vector2(Random.Range(0, 2), 0);
+            animator.SetFloat("Speed", 1);
         }
         else
         {
             rb.velocity = new Vector2(-Random.Range(0, 2), 0);
+            animator.SetFloat("Speed", 1);
         }
         if (enemyT.position.x > patrolCenter + moveSpace/2)
         {
