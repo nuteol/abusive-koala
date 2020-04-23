@@ -30,7 +30,7 @@ public class playercontroller : MonoBehaviour
 
     private float damagedtime;
     private bool takingDamage;
-
+    private bool InputEnabled = true;
 
 
     private void Start()
@@ -46,8 +46,9 @@ public class playercontroller : MonoBehaviour
         animator = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
         playerT = GetComponent<Transform>();
-
+        gameObject.SetActive(true);
         damagedtime = Time.time;
+        rb.isKinematic = false;
     }
 
     private void Update()
@@ -59,38 +60,38 @@ public class playercontroller : MonoBehaviour
         {
             extraJumps = extraJumpValue;
         }
-        if (Input.GetKeyDown(KeyCode.W) && extraJumps > 0)
-        {
-            rb.velocity = Vector2.up * jumpForce;
-            extraJumps--;
-            animator.SetBool("IsJumping", true);
-            SoundManager.PlaySound("playerJump");
-        }
-        else if(Input.GetKeyDown(KeyCode.W) && extraJumps == 0 && isGrounded)
-        {
-            SoundManager.PlaySound("playerJump");
-            rb.velocity = Vector2.up * jumpForce;
-            animator.SetBool("IsJumping", true);
-        }
-        if(rb.velocity.y < -5 && !isGrounded)
-        {
-            animator.SetBool("IsJumping", false);
-            animator.SetBool("IsFalling", true);
-        }
-        else if(rb.velocity.y == 0)
-        {
-            animator.SetBool("IsFalling", false);
-        }
+       
+            if (Input.GetKeyDown(KeyCode.W) && extraJumps > 0)
+            {
+                rb.velocity = Vector2.up * jumpForce;
+                extraJumps--;
+                animator.SetBool("IsJumping", true);
+                SoundManager.PlaySound("playerJump");
+            }
+            else if(Input.GetKeyDown(KeyCode.W) && extraJumps == 0 && isGrounded)
+            {
+                SoundManager.PlaySound("playerJump");
+                rb.velocity = Vector2.up * jumpForce;
+                animator.SetBool("IsJumping", true);
+            }
+            if(rb.velocity.y < -5 && !isGrounded)
+            {
+                animator.SetBool("IsJumping", false);
+                animator.SetBool("IsFalling", true);
+            }
+            else if(rb.velocity.y == 0)
+            {
+                animator.SetBool("IsFalling", false);
+            }
 
-        if (Input.GetKeyDown(equip1))
-        {
-            animator.SetBool("Weapon1Equipped", true);
-        }
-        if (Input.GetKeyDown(attack1))
-        {
-            animator.SetTrigger("Weapon1Attack");
-        }
-
+            if (Input.GetKeyDown(equip1))
+            {
+                animator.SetBool("Weapon1Equipped", true);
+            }
+            if (Input.GetKeyDown(attack1))
+            {
+                animator.SetTrigger("Weapon1Attack");
+            }
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
     }
 
@@ -123,8 +124,8 @@ public class playercontroller : MonoBehaviour
         {
             //Play animation or something
             SoundManager.PlaySound("playerDeath");
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;
             StartCoroutine(ExecuteDeathAfterTime(1));
-
         }
     }
 
@@ -155,13 +156,14 @@ public class playercontroller : MonoBehaviour
         {
             //Play animation or something
             SoundManager.PlaySound("playerDeath");
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;
             StartCoroutine(ExecuteDeathAfterTime(1));
            
         }
     }
     IEnumerator ExecuteDeathAfterTime(float time)
     {
-
+        
         yield return new WaitForSeconds(time);
         Death();
     }
