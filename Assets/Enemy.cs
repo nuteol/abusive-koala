@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    private int maxHealth = 10;
-    private int currentHealth;
+    private float maxHealth = 10;
+    private float currentHealth;
+    public Image healthBar;
+
     public SpecialAttack spec;
     private bool moveRight = true;
     private Rigidbody2D rb;
@@ -21,6 +24,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         enemyT = GetComponent<Transform>();
         patrolCenter = enemyT.position.x;
+
     }
 
     private void Update()
@@ -48,7 +52,8 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if(currentHealth <= 0)
+        healthBar.fillAmount = currentHealth / maxHealth;
+        if (currentHealth <= 0)
         {
             Death();
         }
@@ -76,5 +81,6 @@ public class Enemy : MonoBehaviour
         //Death anime here
         //End death anim
         Destroy(gameObject);
+        SoundManager.PlaySound("monsterDeath");
     }
 }

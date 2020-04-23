@@ -8,6 +8,7 @@ public class attackingscript : MonoBehaviour
     [SerializeField] private LayerMask Glass;
     [SerializeField] private LayerMask Metal;
     private Transform attackPos;
+    public bool weaponEquipped = false;
 
 
     private abstract class weapon
@@ -32,7 +33,7 @@ public class attackingscript : MonoBehaviour
         public cardboardCutter()
         {
             name = "Cardboard Cutter";
-            damagePaper = 33;
+            damagePaper = 5;
             damageGlass = 1;
             damageMetal = 0;
             attackRange = 1.5f;
@@ -76,10 +77,16 @@ public class attackingscript : MonoBehaviour
         if(Input.GetKey(KeyCode.Alpha1))
         {
             currentWeapon = cardboardcutter;
+            SoundManager.PlaySound("playerDraw");
+            weaponEquipped = true;
         }
         if (Input.GetKey(KeyCode.X))
         {
             currentWeapon.weaponAttack(attackPos, Paper, Glass, Metal);
+            if (weaponEquipped)
+            {
+                SoundManager.PlaySound("playerHit");
+            }
         }
     }
 }

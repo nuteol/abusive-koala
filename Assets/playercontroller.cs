@@ -10,6 +10,7 @@ public class playercontroller : MonoBehaviour
     public HealthBar hp;
     public SpecialAttack spec;
 
+    private bool isCoroutineExecuting = false;
     private Rigidbody2D rb;
     private Animator animator;
     private Collider2D coll;
@@ -63,9 +64,11 @@ public class playercontroller : MonoBehaviour
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
             animator.SetBool("IsJumping", true);
+            SoundManager.PlaySound("playerJump");
         }
         else if(Input.GetKeyDown(KeyCode.W) && extraJumps == 0 && isGrounded)
         {
+            SoundManager.PlaySound("playerJump");
             rb.velocity = Vector2.up * jumpForce;
             animator.SetBool("IsJumping", true);
         }
@@ -119,7 +122,9 @@ public class playercontroller : MonoBehaviour
         if (collision.gameObject.tag.Equals("Death"))
         {
             //Play animation or something
-            Death();
+            SoundManager.PlaySound("playerDeath");
+            StartCoroutine(ExecuteDeathAfterTime(1));
+
         }
     }
 
@@ -129,6 +134,7 @@ public class playercontroller : MonoBehaviour
         hp.SetHealth(currentHearts);
         damagedtime = Time.time + 0.4f;
         takingDamage = true;
+        SoundManager.PlaySound("playerGetHit"); 
         if (enemyT.position.x < playerT.position.x)
         {
             rb.velocity = new Vector2(5*(playerT.position.x - enemyT.position.x), 10);
@@ -148,14 +154,22 @@ public class playercontroller : MonoBehaviour
         if(currentHearts <= 0)
         {
             //Play animation or something
-            Death();
+            SoundManager.PlaySound("playerDeath");
+            StartCoroutine(ExecuteDeathAfterTime(1));
+           
         }
     }
+    IEnumerator ExecuteDeathAfterTime(float time)
+    {
 
+        yield return new WaitForSeconds(time);
+        Death();
+    }
     private void Death()
     {
         //GUI Transition
         SceneManager.LoadScene("BasicScene1");
+
     }
 }
 
