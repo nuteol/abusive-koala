@@ -22,7 +22,8 @@ public class playercontroller : MonoBehaviour
     private float horizontalMove = 0f;
     private bool facingRight = true;
     private bool isGrounded;
-    public Transform groundCheck;
+    public Transform groundCheckR;
+    public Transform groundCheckL;
     public float checkradius;
     public LayerMask whatIsGround;
     private int extraJumps;
@@ -32,6 +33,7 @@ public class playercontroller : MonoBehaviour
     private bool takingDamage;
     private bool InputEnabled = true;
 
+    public float nextDamageTime = 0f;
 
     private void Start()
     {
@@ -97,7 +99,7 @@ public class playercontroller : MonoBehaviour
 
     private void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkradius, whatIsGround);
+        isGrounded = Physics2D.OverlapCircle(groundCheckR.position, checkradius, whatIsGround) || Physics2D.OverlapCircle(groundCheckL.position, checkradius, whatIsGround);
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         rb.velocity = new Vector2(horizontalMove, rb.velocity.y);
         if(facingRight == false && horizontalMove > 0)
@@ -131,35 +133,40 @@ public class playercontroller : MonoBehaviour
 
     public void TakeDamage(Transform enemyT)
     {
-        currentHearts--;
-        hp.SetHealth(currentHearts);
-        damagedtime = Time.time + 0.4f;
-        takingDamage = true;
-        SoundManager.PlaySound("playerGetHit"); 
-        if (enemyT.position.x < playerT.position.x)
+        if(nextDamageTime <= Time.time)
         {
-            rb.velocity = new Vector2(5*(playerT.position.x - enemyT.position.x), 10);
-        }
-        else
-        {
-            if (enemyT.position.x > playerT.position.x)
+            nextDamageTime = Time.time + 2;
+            currentHearts--;
+            hp.SetHealth(currentHearts);
+            damagedtime = Time.time + 0.4f;
+            takingDamage = true;
+            SoundManager.PlaySound("playerGetHit");
+            if (enemyT.position.x < playerT.position.x)
             {
-                rb.velocity = new Vector2(-5 *(enemyT.position.x - playerT.position.x), 10);
+                rb.velocity = new Vector2(5 * (playerT.position.x - enemyT.position.x), 10);
             }
             else
             {
-                rb.velocity = new Vector2(rb.velocity.x, 10);
+                if (enemyT.position.x > playerT.position.x)
+                {
+                    rb.velocity = new Vector2(-5 * (enemyT.position.x - playerT.position.x), 10);
+                }
+                else
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, 10);
+                }
+            }
+
+            if (currentHearts <= 0)
+            {
+                //Play animation or something
+                SoundManager.PlaySound("playerDeath");
+                rb.constraints = RigidbodyConstraints2D.FreezePosition;
+                StartCoroutine(ExecuteDeathAfterTime(1));
+
             }
         }
         
-        if(currentHearts <= 0)
-        {
-            //Play animation or something
-            SoundManager.PlaySound("playerDeath");
-            rb.constraints = RigidbodyConstraints2D.FreezePosition;
-            StartCoroutine(ExecuteDeathAfterTime(1));
-           
-        }
     }
     IEnumerator ExecuteDeathAfterTime(float time)
     {
