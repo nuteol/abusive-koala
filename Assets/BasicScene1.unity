@@ -129,7 +129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &74144731
 RectTransform:
   m_ObjectHideFlags: 0
@@ -662,7 +662,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.11000061, y: 0}
   m_SizeDelta: {x: -15.02, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -877,7 +877,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410242957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 142.98, y: 1.77, z: -10.050533}
+  m_LocalPosition: {x: -4.7, y: 1.77, z: -10.050533}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -991,7 +991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &499842991
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1138,7 +1138,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.11000061, y: 0}
   m_SizeDelta: {x: -15.02, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1400,7 +1400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &882061236
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16733,7 +16733,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014671899}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 142.98, y: 1.77, z: -10.050533}
+  m_LocalPosition: {x: -4.7, y: 1.77, z: -10.050533}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1852354752}
@@ -16924,7 +16924,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199214075}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 142.98, y: 1.77, z: -0.050533753}
+  m_LocalPosition: {x: -4.7, y: 1.77, z: -0.050533753}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1954899754}
@@ -16950,6 +16950,8 @@ MonoBehaviour:
   hp: {fileID: 74144732}
   spec: {fileID: 499842992}
   youDied: {fileID: 1749404510}
+  hpBar: {fileID: 74144730}
+  specBar: {fileID: 499842990}
   equip1: 49
   attack1: 120
   runSpeed: 10
@@ -17183,7 +17185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1328395260
 RectTransform:
   m_ObjectHideFlags: 0

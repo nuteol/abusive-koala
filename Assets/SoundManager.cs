@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
 
-    public static AudioClip backgroundMusic1, playerJumpSound, playerHitSound, playerDeathSound, playerDrawSound, monsterDeathSound, playerGetsHitSound;
+    public static AudioClip backgroundMusic1, playerJumpSound, playerHitSound, playerDeathSound, playerDrawSound, monsterDeathSound, playerGetsHitSound, playerYouDied;
     static AudioSource audrioSrc;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +17,7 @@ public class SoundManager : MonoBehaviour
         playerJumpSound = Resources.Load<AudioClip>("playerJump");
         playerDeathSound = Resources.Load<AudioClip>("maleDeath");
         playerGetsHitSound = Resources.Load<AudioClip>("robloxDeath");
+        playerYouDied = Resources.Load<AudioClip>("youDied");
 
         monsterDeathSound = Resources.Load<AudioClip>("cutterDeath");
 
@@ -47,6 +48,9 @@ public class SoundManager : MonoBehaviour
                 break;
             case "playerDeath":
                 audrioSrc.PlayOneShot(playerDeathSound);
+                break;
+            case "playerYouDied":
+                audrioSrc.PlayOneShot(playerYouDied);
                 break;
             case "playerGetHit":
                 audrioSrc.PlayOneShot(playerGetsHitSound);

@@ -14,6 +14,8 @@ public class playercontroller : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     public GameObject youDied;
+    public GameObject hpBar;
+    public GameObject specBar;
     private Collider2D coll;
     private Transform playerT;
     public KeyCode equip1, attack1;
@@ -53,6 +55,8 @@ public class playercontroller : MonoBehaviour
         damagedtime = Time.time;
         rb.isKinematic = false;
         youDied.SetActive(false);
+        hpBar.SetActive(true);
+        specBar.SetActive(true);
     }
 
     private void Update()
@@ -126,6 +130,7 @@ public class playercontroller : MonoBehaviour
         SoundManager.PlaySound("playerDeath");
         rb.constraints = RigidbodyConstraints2D.FreezePosition;
         youDied.SetActive(true);
+        //SoundManager.PlaySound("playerYouDied");
         StartCoroutine(ExecuteDeathAfterTime(1));
     }
 
