@@ -13,6 +13,7 @@ public class playercontroller : MonoBehaviour
     private bool isCoroutineExecuting = false;
     private Rigidbody2D rb;
     private Animator animator;
+    public GameObject youDied;
     private Collider2D coll;
     private Transform playerT;
     public KeyCode equip1, attack1;
@@ -51,6 +52,7 @@ public class playercontroller : MonoBehaviour
         gameObject.SetActive(true);
         damagedtime = Time.time;
         rb.isKinematic = false;
+        youDied.SetActive(false);
     }
 
     private void Update()
@@ -119,15 +121,20 @@ public class playercontroller : MonoBehaviour
         Scaler.x *= -1;
         transform.localScale = Scaler;
     }
+    public void ExecuteDeath()
+    {
+        SoundManager.PlaySound("playerDeath");
+        rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        youDied.SetActive(true);
+        StartCoroutine(ExecuteDeathAfterTime(1));
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals("Death"))
         {
             //Play animation or something
-            SoundManager.PlaySound("playerDeath");
-            rb.constraints = RigidbodyConstraints2D.FreezePosition;
-            StartCoroutine(ExecuteDeathAfterTime(1));
+            ExecuteDeath();
         }
     }
 
@@ -160,9 +167,7 @@ public class playercontroller : MonoBehaviour
             if (currentHearts <= 0)
             {
                 //Play animation or something
-                SoundManager.PlaySound("playerDeath");
-                rb.constraints = RigidbodyConstraints2D.FreezePosition;
-                StartCoroutine(ExecuteDeathAfterTime(1));
+                ExecuteDeath();
 
             }
         }

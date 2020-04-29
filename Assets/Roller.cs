@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Roller : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Roller : MonoBehaviour
 
     private float mahHealth = 300;
     private float currentHealth;
+    public Image healthBar;
+
     private stages currentStage = stages.full;
     private float idleTime = 8;
     private float chargeTime = 3;
@@ -119,8 +122,8 @@ public class Roller : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        //healthBar.fillAmount = currentHealth / maxHealth;
-        if(currentHealth <= 200 && currentHealth > 100 && currentStage == stages.full)
+        healthBar.fillAmount = currentHealth / mahHealth;
+        if (currentHealth <= 200 && currentHealth > 100 && currentStage == stages.full)
         {
             currentStage = stages.halfFull;
         }
