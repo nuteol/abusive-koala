@@ -103,6 +103,13 @@ public class playercontroller : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            Destroy(other.gameObject);
+        }
+    }
     private void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheckR.position, checkradius, whatIsGround) || Physics2D.OverlapCircle(groundCheckL.position, checkradius, whatIsGround);

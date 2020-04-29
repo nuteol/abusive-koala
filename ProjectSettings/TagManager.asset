@@ -9,6 +9,7 @@ TagManager:
   - Avatar
   - NPC
   - RollerFloor
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -46,6 +47,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: PlayerBackground
+    uniqueID: 4262009423
+    locked: 0
   - name: Background
     uniqueID: 1413255071
     locked: 0
@@ -60,4 +64,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1231162997
+    locked: 0
+  - name: Coin
+    uniqueID: 3840431673
     locked: 0
