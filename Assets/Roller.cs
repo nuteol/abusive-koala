@@ -68,7 +68,6 @@ public class Roller : MonoBehaviour
             currentState = states.fastRoll;            
             rb.velocity = new Vector2(xSpeed, 0);
             animator.SetBool("isRolling", true);
-            animator.SetFloat("Speed", 5);
         }
         else if (currentState == states.chargingB)
         {
