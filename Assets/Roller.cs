@@ -7,6 +7,8 @@ public class Roller : MonoBehaviour
     private enum stages { full, halfFull, empty };
     private enum states { intro, idle, chargingF, chargingB, fastRoll, bounceRoll, dead };
 
+    
+
     private float mahHealth = 300;
     private float currentHealth;
     private stages currentStage = stages.full;
@@ -21,6 +23,7 @@ public class Roller : MonoBehaviour
 
     private Rigidbody2D rb;
     private Transform rollerT;
+    public Animator animator;
 
 
     // Start is called before the first frame update
@@ -62,8 +65,10 @@ public class Roller : MonoBehaviour
         else if (currentState == states.chargingF)
         {
             currentSwitchTime = rollTime + Time.time;
-            currentState = states.fastRoll;
+            currentState = states.fastRoll;            
             rb.velocity = new Vector2(xSpeed, 0);
+            animator.SetBool("isRolling", true);
+            animator.SetFloat("Speed", 5);
         }
         else if (currentState == states.chargingB)
         {
@@ -71,13 +76,16 @@ public class Roller : MonoBehaviour
             currentState = states.bounceRoll;
             rb.velocity = new Vector2(xSpeed/4, 20);
             rb.bodyType = RigidbodyType2D.Dynamic;
+            animator.SetBool("isJumping", true);
         }
         else if (currentState == states.fastRoll || currentState == states.bounceRoll)
         {
             currentSwitchTime = idleTime + Time.time;
-            currentState = states.idle;
+            currentState = states.idle;            
             rb.velocity = new Vector2(0, 0);
             Flip();
+            animator.SetBool("isRolling", false);
+            animator.SetBool("isJumping", false);
         }
     }
 
@@ -89,6 +97,7 @@ public class Roller : MonoBehaviour
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
+        return;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
