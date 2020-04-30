@@ -8,6 +8,8 @@ public class Roller : MonoBehaviour
     private enum stages { full, halfFull, empty };
     private enum states { intro, idle, chargingF, chargingB, fastRoll, bounceRoll, dead };
 
+    
+
     private float mahHealth = 300;
     private float currentHealth;
     public Image healthBar;
@@ -24,6 +26,7 @@ public class Roller : MonoBehaviour
 
     private Rigidbody2D rb;
     private Transform rollerT;
+    public Animator animator;
 
 
     // Start is called before the first frame update
@@ -54,33 +57,41 @@ public class Roller : MonoBehaviour
             if (Random.Range(0, 2) == 1)
             {
                 currentState = states.chargingF;
+                animator.SetBool("isChargingF", true);
             }
             else
             {
                 currentState = states.chargingB;
+                animator.SetBool("isChargingB", true);
             }
             currentSwitchTime = chargeTime + Time.time;
             
         }
         else if (currentState == states.chargingF)
         {
+            animator.SetBool("isChargingF", false);
             currentSwitchTime = rollTime + Time.time;
-            currentState = states.fastRoll;
+            currentState = states.fastRoll;            
             rb.velocity = new Vector2(xSpeed, 0);
+            animator.SetBool("isRolling", true);
         }
         else if (currentState == states.chargingB)
         {
+            animator.SetBool("isChargingB", false);
             currentSwitchTime = rollTime * 4 + Time.time;
             currentState = states.bounceRoll;
             rb.velocity = new Vector2(xSpeed/4, 20);
             rb.bodyType = RigidbodyType2D.Dynamic;
+            animator.SetBool("isRolling", true);
         }
         else if (currentState == states.fastRoll || currentState == states.bounceRoll)
         {
             currentSwitchTime = idleTime + Time.time;
-            currentState = states.idle;
+            currentState = states.idle;            
             rb.velocity = new Vector2(0, 0);
             Flip();
+            animator.SetBool("isRolling", false);
+            animator.SetBool("isJumping", false);
         }
     }
 
@@ -92,6 +103,7 @@ public class Roller : MonoBehaviour
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
+        return;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
