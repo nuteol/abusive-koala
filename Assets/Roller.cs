@@ -54,16 +54,19 @@ public class Roller : MonoBehaviour
             if (Random.Range(0, 2) == 1)
             {
                 currentState = states.chargingF;
+                animator.SetBool("isChargingF", true);
             }
             else
             {
                 currentState = states.chargingB;
+                animator.SetBool("isChargingB", true);
             }
             currentSwitchTime = chargeTime + Time.time;
             
         }
         else if (currentState == states.chargingF)
         {
+            animator.SetBool("isChargingF", false);
             currentSwitchTime = rollTime + Time.time;
             currentState = states.fastRoll;            
             rb.velocity = new Vector2(xSpeed, 0);
@@ -71,11 +74,12 @@ public class Roller : MonoBehaviour
         }
         else if (currentState == states.chargingB)
         {
+            animator.SetBool("isChargingB", false);
             currentSwitchTime = rollTime * 4 + Time.time;
             currentState = states.bounceRoll;
             rb.velocity = new Vector2(xSpeed/4, 20);
             rb.bodyType = RigidbodyType2D.Dynamic;
-            animator.SetBool("isJumping", true);
+            animator.SetBool("isRolling", true);
         }
         else if (currentState == states.fastRoll || currentState == states.bounceRoll)
         {
