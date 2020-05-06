@@ -24,6 +24,7 @@ public class Roller : MonoBehaviour
     private float xSpeed = -20;
     private states currentState;
 
+    private BoxCollider2D bosscollider;
     private Rigidbody2D rb;
     private Transform rollerT;
     public Animator animator;
@@ -38,6 +39,7 @@ public class Roller : MonoBehaviour
         currentHealth = mahHealth;
         rb = GetComponent<Rigidbody2D>();
         rollerT = GetComponent<Transform>();
+        bosscollider = GetComponent<BoxCollider2D>();
     }
 
 
@@ -56,6 +58,8 @@ public class Roller : MonoBehaviour
         {
             if (Random.Range(0, 2) == 1)
             {
+                bosscollider.offset = new Vector2(0, -0.9f);
+                bosscollider.size = new Vector2(3.04f, 3);
                 currentState = states.chargingF;
                 animator.SetBool("isChargingF", true);
             }
@@ -77,6 +81,8 @@ public class Roller : MonoBehaviour
         }
         else if (currentState == states.chargingB)
         {
+            bosscollider.offset = new Vector2(0, -0.9f);
+            bosscollider.size = new Vector2(3.04f, 3);
             animator.SetBool("isChargingB", false);
             currentSwitchTime = rollTime * 4 + Time.time;
             currentState = states.bounceRoll;
@@ -86,6 +92,8 @@ public class Roller : MonoBehaviour
         }
         else if (currentState == states.fastRoll || currentState == states.bounceRoll)
         {
+            bosscollider.offset = new Vector2(0, -0.3f);
+            bosscollider.size = new Vector2(3.04f, 4.38f);
             currentSwitchTime = idleTime + Time.time;
             currentState = states.idle;            
             rb.velocity = new Vector2(0, 0);
@@ -116,7 +124,7 @@ public class Roller : MonoBehaviour
         {
             rb.bodyType = RigidbodyType2D.Kinematic;
             rb.velocity = new Vector2(0, 0);
-            rollerT.position = new Vector3(rollerT.position.x, 4, rollerT.position.z);
+            rollerT.position = new Vector3(rollerT.position.x, 3.5f, rollerT.position.z);
         }
     }
 
