@@ -7,6 +7,7 @@ public class RollerController : MonoBehaviour
     public Roller roller;
     private Collider2D coll;
     private Transform controllerT;
+    public GameObject healthBarGameObject;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,9 @@ public class RollerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.tag == "Avatar" && collision.gameObject.transform.position.x > controllerT.position.x)
+        healthBarGameObject.SetActive(true);
+        SoundManager.PlaySound("bossMusic");
+        if (collision.tag == "Avatar" && collision.gameObject.transform.position.x > controllerT.position.x)
         {
             coll.isTrigger = false;
             roller.enabled = true;

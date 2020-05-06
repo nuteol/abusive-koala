@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     private float maxHealth = 10;
     private float currentHealth;
     public Image healthBar;
+    public SpecialAttack spec;
 
     private bool moveRight = true;
     private Rigidbody2D rb;
@@ -15,6 +16,8 @@ public class Enemy : MonoBehaviour
     public float moveSpace;
     private float patrolCenter;
     public Animator animator;
+
+    public GameObject lootDrop;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +53,7 @@ public class Enemy : MonoBehaviour
 
     public bool TakeDamage(int damage)
     {
+        spec.AddSpecial(damage);
         currentHealth -= damage;
         healthBar.fillAmount = currentHealth / maxHealth;
         if (currentHealth <= 0)
@@ -70,8 +74,7 @@ public class Enemy : MonoBehaviour
 
     void Death()
     {
-        //Death anime here
-        //End death anim
+        Instantiate(lootDrop, transform.position, Quaternion.identity);
         Destroy(gameObject);
         SoundManager.PlaySound("monsterDeath");
     }

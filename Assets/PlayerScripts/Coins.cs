@@ -12,7 +12,7 @@ public class Coins : MonoBehaviour
         if (other.gameObject.CompareTag("Avatar"))
         {
             ScoreManager.instance.ChangeScore(coinValue);
+            
         }
-        
     }
 }

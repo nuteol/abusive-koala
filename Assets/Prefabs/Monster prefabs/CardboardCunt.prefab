@@ -144,9 +144,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 4778615385466969228}
-  spec: {fileID: 0}
+  spec: {fileID: 5611793898462801874, guid: 5eec7ceb3c3a24a4087be903baeadfd9, type: 3}
   moveSpace: 2
   animator: {fileID: 4778615384082851641}
+  lootDrop: {fileID: 1094911470266595780, guid: cd4e5e6c3ad82d849ac821a18cdd7cef,
+    type: 3}
 --- !u!95 &4778615384082851641
 Animator:
   serializedVersion: 3

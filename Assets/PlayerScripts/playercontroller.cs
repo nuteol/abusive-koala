@@ -103,9 +103,10 @@ public class playercontroller : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
     }
 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Coin"))
+        if (other.gameObject.CompareTag("Coin") || other.gameObject.CompareTag("GroundCoin"))
         {
             Destroy(other.gameObject);
         }
@@ -191,6 +192,7 @@ public class playercontroller : MonoBehaviour
         yield return new WaitForSeconds(time);
         Death();
     }
+    
     private void Death()
     {
         //GUI Transition

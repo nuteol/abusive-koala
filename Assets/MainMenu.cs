@@ -10,11 +10,13 @@ public class MainMenu : MonoBehaviour
     public void Start()
     {
         background.SetActive(true);
+        SoundManager.PlayMainMenu();
     }
     // Start is called before the first frame update
    public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SoundManager.PlayBackground();
         
     }
     public void QuitGame()

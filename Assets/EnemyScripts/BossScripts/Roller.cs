@@ -13,6 +13,8 @@ public class Roller : MonoBehaviour
     private float mahHealth = 300;
     private float currentHealth;
     public Image healthBar;
+    public GameObject healthBarGameObject;
+    public SpecialAttack spec;
 
     private stages currentStage = stages.full;
     private float idleTime = 8;
@@ -33,6 +35,7 @@ public class Roller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        healthBarGameObject.SetActive(false);
         //Play Animation currentstate is intro/Wait to finish
         currentState = states.idle;
         currentSwitchTime = Time.time + idleTime;
@@ -116,7 +119,7 @@ public class Roller : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "RollerFloor" && currentState == states.bounceRoll)
+        if (collision.gameObject.tag == "RollerFloor" && currentState == states.bounceRoll)
         {
             rb.velocity = new Vector2(xSpeed / 4, 20);
         }
@@ -130,7 +133,7 @@ public class Roller : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(currentState == states.fastRoll || currentState == states.bounceRoll)
+        if (currentState == states.fastRoll || currentState == states.bounceRoll)
         {
             if(collision.gameObject.tag.Equals("Avatar"))
             {
@@ -141,8 +144,10 @@ public class Roller : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        spec.AddSpecial(damage);
         currentHealth -= damage;
         healthBar.fillAmount = currentHealth / mahHealth;
+       
         if (currentHealth <= 200 && currentHealth > 100 && currentStage == stages.full)
         {
             currentStage = stages.halfFull;
@@ -175,6 +180,8 @@ public class Roller : MonoBehaviour
     {
         //Death anime here
         //End death anim
+        healthBarGameObject.SetActive(false);
+        SoundManager.audrioSrc.Stop();
         Destroy(gameObject);
         SoundManager.PlaySound("monsterDeath");
     }

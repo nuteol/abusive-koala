@@ -42,7 +42,7 @@ public class attackingscript : MonoBehaviour
             bool increase = false;
             if(nextAttackTime <= Time.time)
             {
-                SoundManager.PlaySound("playerHit");
+                
                 Collider2D[] paperEnemiesToDamage = Physics2D.OverlapCircleAll(ap.position, attackRange, wiep);
                 foreach (Collider2D enemy in paperEnemiesToDamage)
                 {
@@ -71,7 +71,15 @@ public class attackingscript : MonoBehaviour
     }
     weapon currentWeapon = new hand();
     weapon cardboardcutter;
-    
+
+    IEnumerator ExecuteAttackAfterTime(float time)
+    {
+
+        yield return new WaitForSeconds(time);
+        currentWeapon.weaponAttack(attackPos, Paper, Glass, Metal);
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -89,7 +97,8 @@ public class attackingscript : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.X))
         {
-            currentWeapon.weaponAttack(attackPos, Paper, Glass, Metal);
+            StartCoroutine(ExecuteAttackAfterTime(0.4f));
+            SoundManager.PlaySound("playerHit");
         }
     }
 }
