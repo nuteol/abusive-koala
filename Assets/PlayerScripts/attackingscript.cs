@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class attackingscript : MonoBehaviour
 {
@@ -8,7 +9,6 @@ public class attackingscript : MonoBehaviour
     [SerializeField] private LayerMask Glass;
     [SerializeField] private LayerMask Metal;
     private Transform attackPos;
-
 
     private abstract class weapon
     {
@@ -39,6 +39,7 @@ public class attackingscript : MonoBehaviour
         }
         public override void weaponAttack(Transform ap, LayerMask wiep, LayerMask wieg, LayerMask wiem)
         {
+            bool increase = false;
             if(nextAttackTime <= Time.time)
             {
                 SoundManager.PlaySound("playerHit");
@@ -47,7 +48,7 @@ public class attackingscript : MonoBehaviour
                 {
                     if(enemy.GetComponent<Enemy>() != null)
                     {
-                        enemy.GetComponent<Enemy>().TakeDamage(damagePaper);
+                        increase = enemy.GetComponent<Enemy>().TakeDamage(damagePaper);
                     }
                     else if(enemy.GetComponent<Roller>() != null)
                     {

@@ -9,7 +9,6 @@ public class Enemy : MonoBehaviour
     private float currentHealth;
     public Image healthBar;
 
-    public SpecialAttack spec;
     private bool moveRight = true;
     private Rigidbody2D rb;
     private Transform enemyT;
@@ -49,7 +48,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public bool TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.fillAmount = currentHealth / maxHealth;
@@ -57,15 +56,7 @@ public class Enemy : MonoBehaviour
         {
             Death();
         }
-        if (spec.GetSpecAmount()+damage < 100)
-        {
-            spec.AddSpecial(damage);
-        }
-        else
-        {
-            spec.SetSpecial(100);
-        }
-        
+        return (currentHealth <= 0);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
