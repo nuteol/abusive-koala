@@ -29,11 +29,20 @@ SpriteAtlas:
       enableRotation: 1
       enableTightPacking: 1
     variantMultiplier: 1
-    packables: []
-    totalSpriteSurfaceArea: 0
+    packables:
+    - {fileID: 21300188, guid: 62b0c948923b74b4ea5e3db549385ccb, type: 3}
+    - {fileID: 21300190, guid: 62b0c948923b74b4ea5e3db549385ccb, type: 3}
+    - {fileID: 21300154, guid: e32afa0c7d638084c8c27ad0c7fe6e5b, type: 3}
+    totalSpriteSurfaceArea: 768
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites: []
-  m_PackedSpriteNamesToIndex: []
+  m_PackedSprites:
+  - {fileID: 21300188, guid: 62b0c948923b74b4ea5e3db549385ccb, type: 3}
+  - {fileID: 21300190, guid: 62b0c948923b74b4ea5e3db549385ccb, type: 3}
+  - {fileID: 21300154, guid: e32afa0c7d638084c8c27ad0c7fe6e5b, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Tilemap-desert 1_94
+  - Tilemap-desert 1_95
+  - Tilemap-desert_77
   m_Tag: GapFix
   m_IsVariant: 0
