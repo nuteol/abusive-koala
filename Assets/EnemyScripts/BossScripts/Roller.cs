@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Roller : MonoBehaviour
 {
     private enum stages { full, halfFull, empty };
     private enum states { intro, idle, chargingF, chargingB, fastRoll, bounceRoll, dead };
 
-    
+    private string BossName = "Toilet Roller";
+    public TextMeshProUGUI name;
+    public Image endScreen;
+    public TextMeshProUGUI endText;
 
     private float mahHealth = 300;
     private float currentHealth;
@@ -35,6 +40,9 @@ public class Roller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        endScreen.enabled = false;
+        endText.enabled = false;
+        name.text = BossName;
         healthBarGameObject.SetActive(false);
         //Play Animation currentstate is intro/Wait to finish
         currentState = states.idle;
@@ -184,5 +192,9 @@ public class Roller : MonoBehaviour
         SoundManager.audrioSrc.Stop();
         Destroy(gameObject);
         SoundManager.PlaySound("monsterDeath");
+        Debug.Log("BossDead");
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1); // next level load
+        endScreen.enabled = true;
+        endText.enabled = true;
     }
 }
