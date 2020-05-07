@@ -196,6 +196,7 @@ public class playercontroller : MonoBehaviour
     private void Death()
     {
         //GUI Transition
+        animator.SetBool("dead", true);
         SceneManager.LoadScene("BasicScene1");
 
     }
