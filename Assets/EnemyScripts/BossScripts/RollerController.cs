@@ -8,6 +8,7 @@ public class RollerController : MonoBehaviour
     private Collider2D coll;
     private Transform controllerT;
     public GameObject healthBarGameObject;
+    public GameObject BgMusic;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class RollerController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         healthBarGameObject.SetActive(true);
+        BgMusic.SetActive(false);
         SoundManager.PlaySound("bossMusic");
         if (collision.tag == "Avatar" && collision.gameObject.transform.position.x > controllerT.position.x)
         {

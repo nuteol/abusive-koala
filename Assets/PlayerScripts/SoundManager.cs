@@ -42,6 +42,10 @@ public class SoundManager : MonoBehaviour
         audrioSrc.Play();
 
     }
+    public static void StopMainMenu()
+    {
+        audrioSrc.Stop();
+    }
     public static void PlayBackground()
     {
 
