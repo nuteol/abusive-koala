@@ -106,7 +106,7 @@ public class playercontroller : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Coin") || other.gameObject.CompareTag("GroundCoin"))
+        if (other.gameObject.CompareTag("Coin"))
         {
             Destroy(other.gameObject);
         }
