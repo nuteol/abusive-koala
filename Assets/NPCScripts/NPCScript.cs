@@ -28,11 +28,13 @@ public class NPCScript : MonoBehaviour
             //start diologue here
             dialogue.sentence = this.sentence;
             dialogue.BeginDialogue();
+            //For now we do this
+            collision.gameObject.GetComponent<attackingscript>().UnlockWeapon1();
+            collision.gameObject.GetComponent<attackingscript>().UnlockWeapon2();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         dialogue.QuitDialogue();
     }
-    
 }

@@ -8,14 +8,12 @@ public class playercontroller : MonoBehaviour
     public int maxHearts = 3;
     public int currentHearts;
     public HealthBar hp;
-    public SpecialAttack spec;
 
     private bool isCoroutineExecuting = false;
     private Rigidbody2D rb;
     private Animator animator;
     public GameObject youDied;
     public GameObject hpBar;
-    public GameObject specBar;
     private Collider2D coll;
     private Transform playerT;
     public KeyCode equip1, attack1;
@@ -41,9 +39,6 @@ public class playercontroller : MonoBehaviour
     private void Start()
     {
         extraJumps = extraJumpValue;
-
-        spec.SetMaxSpecial(100);
-        spec.SetSpecial(0);
         currentHearts = maxHearts;
         hp.SetMaxHealth(maxHearts);
 
@@ -56,7 +51,6 @@ public class playercontroller : MonoBehaviour
         rb.isKinematic = false;
         youDied.SetActive(false);
         hpBar.SetActive(true);
-        specBar.SetActive(true);
     }
 
     private void Update()

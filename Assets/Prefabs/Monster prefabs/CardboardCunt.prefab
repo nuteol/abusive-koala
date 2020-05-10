@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4778615384082851641}
   m_Layer: 9
   m_Name: CardboardCunt
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,11 +140,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4778615384082851647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9f37e6dec80dc6448e1c95d1a955e9e, type: 3}
+  m_Script: {fileID: 11500000, guid: 956d9d8750cfc2b40a102768fb527c8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 4778615385466969228}
-  spec: {fileID: 5611793898462801874, guid: 5eec7ceb3c3a24a4087be903baeadfd9, type: 3}
   moveSpace: 2
   animator: {fileID: 4778615384082851641}
   lootDrop: {fileID: 1094911470266595780, guid: cd4e5e6c3ad82d849ac821a18cdd7cef,
@@ -374,8 +373,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0.00000017881, y: 0.115500025}
-  m_SizeDelta: {x: -0.00000011921, y: 0.231}
+  m_AnchoredPosition: {x: 0, y: 0.1155}
+  m_SizeDelta: {x: -0.00000023841858, y: 0.231}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4778615385466969229
 CanvasRenderer:

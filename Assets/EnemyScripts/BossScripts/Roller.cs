@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class Roller : MonoBehaviour
+public class Roller : Enemy
 {
     private enum stages { full, halfFull, empty };
     private enum states { intro, idle, chargingF, chargingB, fastRoll, bounceRoll, dead };
@@ -19,7 +19,6 @@ public class Roller : MonoBehaviour
     private float currentHealth;
     public Image healthBar;
     public GameObject healthBarGameObject;
-    public SpecialAttack spec;
 
     private stages currentStage = stages.full;
     private float idleTime = 8;
@@ -150,17 +149,15 @@ public class Roller : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public override bool TakeDamage(int damage)
     {
-        spec.AddSpecial(damage);
         currentHealth -= damage;
         healthBar.fillAmount = currentHealth / mahHealth;
-       
         if (currentHealth <= 200 && currentHealth > 100 && currentStage == stages.full)
         {
             currentStage = stages.halfFull;
         }
-        else if(currentHealth <= 100 && currentHealth > 0 && currentStage == stages.halfFull)
+        else if (currentHealth <= 100 && currentHealth > 0 && currentStage == stages.halfFull)
         {
             currentStage = stages.empty;
             //Boss moves faster
@@ -173,7 +170,9 @@ public class Roller : MonoBehaviour
         {
             currentState = states.dead;
             Death();
+            
         }
+        return (currentHealth <= 0);
         /*if (spec.GetSpecAmount() + damage < 100)
         {
             spec.AddSpecial(damage);
@@ -184,7 +183,7 @@ public class Roller : MonoBehaviour
         }*/
     }
 
-    void Death()
+    public override void Death()
     {
         //Death anime here
         //End death anim
