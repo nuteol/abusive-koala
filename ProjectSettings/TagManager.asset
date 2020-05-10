@@ -11,6 +11,7 @@ TagManager:
   - RollerFloor
   - Coin
   - music
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - Metal
   - Ground
   - Death
-  - 
+  - Projectile
   - 
   - 
   - 
@@ -62,6 +63,9 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 2377423563
+    locked: 0
+  - name: Projectile
+    uniqueID: 1884056971
     locked: 0
   - name: Player
     uniqueID: 1231162997
