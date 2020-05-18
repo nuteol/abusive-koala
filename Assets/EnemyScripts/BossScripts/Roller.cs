@@ -14,6 +14,8 @@ public class Roller : Enemy
     public TextMeshProUGUI name;
     public Image endScreen;
     public TextMeshProUGUI endText;
+    public MoveToNextLevel state;
+    public GameObject exit;
 
     private float mahHealth = 300;
     private float currentHealth;
@@ -39,6 +41,7 @@ public class Roller : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        exit.SetActive(false);
         endScreen.enabled = false;
         endText.enabled = false;
         name.text = BossName;
@@ -192,8 +195,10 @@ public class Roller : Enemy
         Destroy(gameObject);
         SoundManager.PlaySound("monsterDeath");
         Debug.Log("BossDead");
+        state.isDead = true;
+        exit.SetActive(true);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1); // next level load
-        endScreen.enabled = true;
-        endText.enabled = true;
+        //endScreen.enabled = true;
+        //endText.enabled = true;
     }
 }

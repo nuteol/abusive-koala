@@ -88,6 +88,7 @@ public class playercontroller : MonoBehaviour
 
             if (Input.GetKeyDown(equip1))
             {
+                
                 animator.SetBool("Weapon1Equipped", true);
             }
             if (Input.GetKeyDown(attack1))
