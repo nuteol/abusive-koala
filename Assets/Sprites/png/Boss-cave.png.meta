@@ -20,6 +20,16 @@ TextureImporter:
     21300030: Boss-cave_15
     21300032: Boss-cave_16
     21300034: Boss-cave_17
+    21300036: Boss-cave_18
+    21300038: Boss-cave_19
+    21300040: Boss-cave_20
+    21300042: Boss-cave_21
+    21300044: Boss-cave_22
+    21300046: Boss-cave_23
+    21300048: Boss-cave_24
+    21300050: Boss-cave_25
+    21300052: Boss-cave_26
+    21300054: Boss-cave_27
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -116,7 +126,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af5e740d595b7d14fb3bc41cf5145897
+      spriteID: 0bec81e39c43a634ba3af0bb15eabf4e
       vertices: []
       indices: 
       edges: []
@@ -136,7 +146,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f834416d08ec434d96d6ff3cf00e045
+      spriteID: cff481dacae20854f818b9e3e9cb5a2d
       vertices: []
       indices: 
       edges: []
@@ -156,7 +166,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07695f7d3f97fc74bb636ba1e95e1f3c
+      spriteID: a7de043da3252154ea441178b70c88ca
       vertices: []
       indices: 
       edges: []
@@ -176,7 +186,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca5c2e3aa3d8865478cd7047a4d895e4
+      spriteID: 3c921c146b61b51418043d3db18ae8d4
       vertices: []
       indices: 
       edges: []
@@ -196,7 +206,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3030d1e2b02e77844814f5008041bda6
+      spriteID: 9adc0ac0927568f40b998e0792864708
       vertices: []
       indices: 
       edges: []
@@ -216,7 +226,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 489a4b50404525e478b913f2b525943a
+      spriteID: b613849f0a08631468fb94bdd1a4ecbc
       vertices: []
       indices: 
       edges: []
@@ -225,8 +235,8 @@ TextureImporter:
       name: Boss-cave_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
+        x: 96
+        y: 112
         width: 16
         height: 16
       alignment: 0
@@ -236,7 +246,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65d62c5111e1f6646aedd30db42f84cb
+      spriteID: 2e455652d84303b4da6f2f94b6c78206
       vertices: []
       indices: 
       edges: []
@@ -245,6 +255,26 @@ TextureImporter:
       name: Boss-cave_7
       rect:
         serializedVersion: 2
+        x: 0
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1414d4e19c66401408bcf655e0c80d69
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-cave_8
+      rect:
+        serializedVersion: 2
         x: 16
         y: 96
         width: 16
@@ -256,13 +286,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14bd5d374aa73d14abc9cff278aa26b7
+      spriteID: caf60bbf324ec0f4c89f54ba3647359f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss-cave_8
+      name: Boss-cave_9
       rect:
         serializedVersion: 2
         x: 32
@@ -276,13 +306,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2de80b2696e9bdd4e8442814f699265d
+      spriteID: 1b6b6a5204d45a54c88441c7b151a925
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss-cave_9
+      name: Boss-cave_10
       rect:
         serializedVersion: 2
         x: 48
@@ -296,13 +326,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef56218284b36a441bf8460b59b424e1
+      spriteID: 29622a668a5e56a499c9ea671b945ce8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss-cave_10
+      name: Boss-cave_11
       rect:
         serializedVersion: 2
         x: 64
@@ -316,13 +346,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ad7c1a144f546249b589a52acec9f26
+      spriteID: 6de4de6a7dddf3046a5f5d683a33a347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss-cave_11
+      name: Boss-cave_12
       rect:
         serializedVersion: 2
         x: 80
@@ -336,13 +366,33 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 571ddbd7dcfdbc444a3b2ae6ca116656
+      spriteID: 119a3dfe41ae2fc4d98a15b205243da9
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss-cave_12
+      name: Boss-cave_13
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a57a6a9d005c44d47a27493a4e27d56f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-cave_14
       rect:
         serializedVersion: 2
         x: 0
@@ -356,13 +406,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5288d5964043d664c99de4b76a5cba9b
+      spriteID: 9105df404f8f49448a530644b5f27efc
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss-cave_13
+      name: Boss-cave_15
       rect:
         serializedVersion: 2
         x: 16
@@ -376,13 +426,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73e36cca7de1e184d83b4a3f10183f58
+      spriteID: ddb7d1a6c76d3644f819d6fc82c1e1d7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss-cave_14
+      name: Boss-cave_16
       rect:
         serializedVersion: 2
         x: 32
@@ -396,13 +446,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8819ccf6b9f4384fafd0bda8edf3b5b
+      spriteID: 6867d565ec5da6c47a48773b36cf6135
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss-cave_15
+      name: Boss-cave_17
       rect:
         serializedVersion: 2
         x: 48
@@ -416,13 +466,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb1a90d139f73e048bbe560b5993276f
+      spriteID: b3ebc1473979a224a87b27b3fce7c3c3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss-cave_16
+      name: Boss-cave_18
       rect:
         serializedVersion: 2
         x: 64
@@ -436,13 +486,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ae5d24a79536ea429c0051d3ce64fae
+      spriteID: cc115a9fa1fbb8f4dac034414da82de7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss-cave_17
+      name: Boss-cave_19
       rect:
         serializedVersion: 2
         x: 80
@@ -456,7 +506,167 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a819744d09320294592d7b0edd02f2dd
+      spriteID: 8117c815dcff22c4499c4e9ce0aa5555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-cave_20
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27f8d7e43df9d2447aa585da6b1817cd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-cave_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c6b2fc5d0280e646a9e0078d266faf1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-cave_22
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dff7f4098157cf741adb58f92a6d1c3a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-cave_23
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b6c6adfecb71104cbdd2b88428cd5e4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-cave_24
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb71d6951119b90409d7fceb2d066378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-cave_25
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca60e7aa175d76b489cf5c8b45f7db4e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-cave_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92b5ad633331414489a2353319643b6c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss-cave_27
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7d450795f7737749913e7ce7d84baba
       vertices: []
       indices: 
       edges: []
