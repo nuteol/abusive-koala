@@ -41,7 +41,7 @@ public class attackingscript : MonoBehaviour
         public cardboardCutter()
         {
             name = "Cardboard Cutter";
-            damagePaper = 50;
+            damagePaper = 10;
             damageGlass = 1;
             damageMetal = 0;
             attackRange = 1.3f;
@@ -150,12 +150,13 @@ public class attackingscript : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Alpha1) && currentWeapon != weapons[1] && nextDrawTime <= Time.time && weapons[1] != Hand)
         {
-            currentWeapon = weapons[1];
+            currentWeapon = new cardboardCutter();
             currentWeapon.draw();
         }
         if (Input.GetKey(KeyCode.Alpha2) && currentWeapon != weapons[2] && nextDrawTime <= Time.time && weapons[2] != Hand)
         {
-            currentWeapon = weapons[2];
+            currentWeapon = new metalMace();
+            currentWeapon.draw();
         }
         if (Input.GetKey(KeyCode.X))
         {
