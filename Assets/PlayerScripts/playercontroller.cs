@@ -60,9 +60,11 @@ public class playercontroller : MonoBehaviour
 
         if(isGrounded)
         {
+            //animator.SetBool("IsJumping", false);
+            animator.SetBool("IsFalling", false);
             extraJumps = extraJumpValue;
         }
-       
+        
             if (Input.GetKeyDown(KeyCode.W) && extraJumps > 0)
             {
                 rb.velocity = Vector2.up * jumpForce;
@@ -84,14 +86,22 @@ public class playercontroller : MonoBehaviour
             else if(rb.velocity.y == 0)
             {
                 animator.SetBool("IsFalling", false);
+                animator.SetBool("IsJumping", false);
             }
 
             if (Input.GetKeyDown(equip1))
             {
                 
                 animator.SetBool("Weapon1Equipped", true);
+                animator.SetBool("Weapon2Equipped", false);
             }
-            if (Input.GetKeyDown(attack1))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+
+            animator.SetBool("Weapon2Equipped", true);
+            animator.SetBool("Weapon1Equipped", false);
+        }
+        if (Input.GetKeyDown(attack1))
             {
                 animator.SetTrigger("Weapon1Attack");
             }
@@ -142,6 +152,8 @@ public class playercontroller : MonoBehaviour
         if (collision.gameObject.tag.Equals("Death"))
         {
             //Play animation or something
+
+            animator.SetBool("dead", true);
             ExecuteDeath();
         }
     }
@@ -175,6 +187,7 @@ public class playercontroller : MonoBehaviour
             if (currentHearts <= 0)
             {
                 //Play animation or something
+                animator.SetBool("dead", true);
                 ExecuteDeath();
 
             }
@@ -191,7 +204,7 @@ public class playercontroller : MonoBehaviour
     private void Death()
     {
         //GUI Transition
-        animator.SetBool("dead", true);
+
         SceneManager.LoadScene("BasicScene1");
 
     }

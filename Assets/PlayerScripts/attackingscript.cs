@@ -9,8 +9,10 @@ public class attackingscript : MonoBehaviour
     [SerializeField] private LayerMask Glass;
     [SerializeField] private LayerMask Metal;
     [SerializeField] private LayerMask Projectile;
+    public Animator animator;
     private Transform attackPos;
     private float nextDrawTime = 0f;
+    
 
     private abstract class weapon
     {
@@ -50,6 +52,7 @@ public class attackingscript : MonoBehaviour
             {
                 SoundManager.PlaySound("playerHit");
                 //Do animation here
+                //animator.SetTrigger("Weapon1Attack");
                 Collider2D[] paperEnemiesToDamage = Physics2D.OverlapCircleAll(ap.position, attackRange, wiep);
                 foreach (Collider2D enemy in paperEnemiesToDamage)
                 {
@@ -73,6 +76,7 @@ public class attackingscript : MonoBehaviour
     }
     private class metalMace : weapon
     {
+
         public metalMace()
         {
             name = "Metal Mace";
@@ -87,6 +91,7 @@ public class attackingscript : MonoBehaviour
             {
                 SoundManager.PlaySound("playerHit");
                 //Do animation here
+                //animator.SetTrigger("Weapon1Attack");
                 Collider2D[] paperEnemiesToDamage = Physics2D.OverlapCircleAll(ap.position, attackRange, wiep);
                 foreach (Collider2D enemy in paperEnemiesToDamage)
                 {
