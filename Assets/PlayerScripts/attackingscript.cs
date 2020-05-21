@@ -170,6 +170,7 @@ public class attackingscript : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Alpha2) && currentWeapon != weapons[2] && nextDrawTime <= Time.time && weapons[2] != Hand)
         {
+            
             print("Metal Mace");
             currentWeapon = new metalMace();
             currentWeapon.draw();
@@ -178,7 +179,7 @@ public class attackingscript : MonoBehaviour
         {
             if (currentWeapon != Hand)
             {
-                nextDrawTime = Time.time + 2f;
+                nextDrawTime = Time.time + 0.5f;
             }
             StartCoroutine(ExecuteAttackAfterTime(0.4f));
         }
