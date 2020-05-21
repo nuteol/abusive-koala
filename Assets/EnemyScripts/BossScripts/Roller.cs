@@ -112,7 +112,7 @@ public class Roller : Enemy
             rb.velocity = new Vector2(0, 0);
             Flip();
             animator.SetBool("isRolling", false);
-            animator.SetBool("isJumping", false);
+            //animator.SetBool("isJumping", false);
         }
     }
 
@@ -137,7 +137,7 @@ public class Roller : Enemy
         {
             rb.bodyType = RigidbodyType2D.Kinematic;
             rb.velocity = new Vector2(0, 0);
-            rollerT.position = new Vector3(rollerT.position.x, 3.5f, rollerT.position.z);
+            rollerT.position = new Vector3(rollerT.position.x, 0.5f, rollerT.position.z);
         }
     }
 

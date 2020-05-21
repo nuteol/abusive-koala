@@ -8,6 +8,7 @@ public class NPCScript : MonoBehaviour
     private BoxCollider2D coll;
     public DialogueScript dialogue;
     public string[] sentence2;
+    public int weapon;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +30,14 @@ public class NPCScript : MonoBehaviour
             dialogue.sentence = this.sentence;
             dialogue.BeginDialogue();
             //For now we do this
-            collision.gameObject.GetComponent<attackingscript>().UnlockWeapon1();
-            collision.gameObject.GetComponent<attackingscript>().UnlockWeapon2();
+            if(weapon == 1)
+            {
+                collision.gameObject.GetComponent<attackingscript>().UnlockWeapon1();
+            }
+            if (weapon == 2)
+            {
+                collision.gameObject.GetComponent<attackingscript>().UnlockWeapon2();
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

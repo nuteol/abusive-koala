@@ -30,7 +30,6 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print(collision.gameObject.tag);
         if (collision.gameObject.tag.Equals("Avatar"))
         {
             collision.gameObject.GetComponent<playercontroller>().TakeDamage(transform);

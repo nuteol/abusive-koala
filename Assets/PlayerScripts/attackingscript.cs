@@ -12,7 +12,7 @@ public class attackingscript : MonoBehaviour
     public Animator animator;
     private Transform attackPos;
     private float nextDrawTime = 0f;
-    
+    public int[] unlockedWeapons;
 
     private abstract class weapon
     {
@@ -41,15 +41,16 @@ public class attackingscript : MonoBehaviour
         public cardboardCutter()
         {
             name = "Cardboard Cutter";
-            damagePaper = 50;
+            damagePaper = 10;
             damageGlass = 1;
             damageMetal = 0;
-            attackRange = 1.3f;
+            attackRange = 1.4f;
         }
         public override void weaponAttack(Transform ap, LayerMask wiep, LayerMask wieg, LayerMask wiem, LayerMask projectiles)
         {
             if(nextAttackTime <= Time.time)
             {
+                print("ACC");
                 SoundManager.PlaySound("playerHit");
                 //Do animation here
                 //animator.SetTrigger("Weapon1Attack");
@@ -83,12 +84,13 @@ public class attackingscript : MonoBehaviour
             damagePaper = 1;
             damageGlass = 10;
             damageMetal = 2;
-            attackRange = 1.5f;
+            attackRange = 1.6f;
         }
         public override void weaponAttack(Transform ap, LayerMask wiep, LayerMask wieg, LayerMask wiem, LayerMask projectiles)
         {
             if (nextAttackTime <= Time.time)
             {
+                print("AMM");
                 SoundManager.PlaySound("playerHit");
                 //Do animation here
                 //animator.SetTrigger("Weapon1Attack");
@@ -143,6 +145,18 @@ public class attackingscript : MonoBehaviour
         weapons[2] = Hand;
         weapons[3] = Hand;
         currentWeapon = weapons[0];
+
+        for(int i = 0; i < unlockedWeapons.Length; i++)
+        {
+            if(unlockedWeapons[i] == 1)
+            {
+                UnlockWeapon1();
+            }
+            if (unlockedWeapons[i] == 2)
+            {
+                UnlockWeapon2();
+            }
+        }
     }
 
     // Update is called once per frame
@@ -150,12 +164,15 @@ public class attackingscript : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Alpha1) && currentWeapon != weapons[1] && nextDrawTime <= Time.time && weapons[1] != Hand)
         {
-            currentWeapon = weapons[1];
+            print("Cardboard Cutter");
+            currentWeapon = new cardboardCutter();
             currentWeapon.draw();
         }
         if (Input.GetKey(KeyCode.Alpha2) && currentWeapon != weapons[2] && nextDrawTime <= Time.time && weapons[2] != Hand)
         {
-            currentWeapon = weapons[2];
+            print("Metal Mace");
+            currentWeapon = new metalMace();
+            currentWeapon.draw();
         }
         if (Input.GetKey(KeyCode.X))
         {
