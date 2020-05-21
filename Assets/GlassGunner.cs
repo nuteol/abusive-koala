@@ -16,7 +16,7 @@ public class GlassGunner : Enemy
 
     //public GameObject lootDrop;
 
-    public Transform player;
+    private Transform player;
 
     private float nextShotTime;
     private float distance;
@@ -32,6 +32,7 @@ public class GlassGunner : Enemy
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         enemyT = GetComponent<Transform>();
+        player = GameObject.Find("Player").transform;
     }
     
     void FixedUpdate()
@@ -89,11 +90,11 @@ public class GlassGunner : Enemy
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
         if(facingRight)
         {
-            bulletRb.velocity = new Vector2(8, 0);
+            bulletRb.velocity = new Vector2(6, 0);
         }
         else
         {
-            bulletRb.velocity = new Vector2(-8, 0);
+            bulletRb.velocity = new Vector2(-6, 0);
         }
     }
 }

@@ -36,6 +36,8 @@ public class playercontroller : MonoBehaviour
 
     public float nextDamageTime = 0f;
 
+    public string currentScene = "";
+
     private void Start()
     {
         extraJumps = extraJumpValue;
@@ -204,9 +206,7 @@ public class playercontroller : MonoBehaviour
     private void Death()
     {
         //GUI Transition
-
-        SceneManager.LoadScene("BasicScene1");
-
+        SceneManager.LoadScene(currentScene);
     }
 }
 

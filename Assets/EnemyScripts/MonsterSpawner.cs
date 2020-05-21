@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CCSpawner : MonoBehaviour
+public class MonsterSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject CCprefab;
+    private GameObject monsterPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -13,7 +13,7 @@ public class CCSpawner : MonoBehaviour
         Transform[] a = GetComponentsInChildren<Transform>();
         for(int i = 0; i < a.Length; i++)
         {
-            GameObject.Instantiate(CCprefab, a[i].position, a[i].rotation);
+            GameObject.Instantiate(monsterPrefab, a[i].position, a[i].rotation);
         }
     }
 }
