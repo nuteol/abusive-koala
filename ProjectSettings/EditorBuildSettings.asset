@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: Assets/Level Selections.unity
     guid: 98d253f496694f84f9c8a4eeaa018268
   - enabled: 1
-    path: Assets/BasicScene1.unity
-    guid: 14fad1ed249ab4549a4a52c08ace10a4
-  - enabled: 1
     path: Assets/Level2.unity
     guid: b9f24b7c3e3035c41b38afd7091902d5
+  - enabled: 1
+    path: Assets/BasicScene1.unity
+    guid: 14fad1ed249ab4549a4a52c08ace10a4
   m_configObjects: {}

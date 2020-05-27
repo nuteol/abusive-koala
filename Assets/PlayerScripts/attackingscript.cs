@@ -91,7 +91,9 @@ public class attackingscript : MonoBehaviour
             if (nextAttackTime <= Time.time)
             {
                 print("AMM");
-                SoundManager.PlaySound("playerHit");
+                SoundManager.audrioSrc.volume = 6f;
+                SoundManager.PlaySound("maceHit");
+                SoundManager.audrioSrc.volume = 1f;
                 //Do animation here
                 //animator.SetTrigger("Weapon1Attack");
                 Collider2D[] paperEnemiesToDamage = Physics2D.OverlapCircleAll(ap.position, attackRange, wiep);
@@ -123,7 +125,7 @@ public class attackingscript : MonoBehaviour
         }
         public override void draw()
         {
-            SoundManager.PlaySound("playerDraw");
+            SoundManager.PlaySound("maceDraw");
         }
     }
     weapon currentWeapon;

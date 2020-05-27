@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
 
-    public static AudioClip backgroundMusic0, playerJumpSound, playerHitSound, playerDeathSound, playerDrawSound, monsterDeathSound, playerGetsHitSound, playerYouDied, bossMusic, backgroundMusic1;
+    public static AudioClip backgroundMusic0, playerJumpSound, playerDeathSound, playerHitSound, playerHitSound2, playerDrawSound, playerDrawSound2, monsterDeathSound, playerGetsHitSound, playerYouDied, bossMusic, backgroundMusic1;
     public static AudioSource audrioSrc;
     // Start is called before the first frame update
     void Start()
@@ -15,9 +15,12 @@ public class SoundManager : MonoBehaviour
 
         playerHitSound = Resources.Load<AudioClip>("swordHit");
         playerDrawSound = Resources.Load<AudioClip>("swordDraw");
+        playerHitSound2 = Resources.Load<AudioClip>("maceSwing");
+        playerDrawSound2 = Resources.Load<AudioClip>("maceDraw");
         playerJumpSound = Resources.Load<AudioClip>("playerJump");
         playerDeathSound = Resources.Load<AudioClip>("maleDeath");
-        playerGetsHitSound = Resources.Load<AudioClip>("robloxDeath");
+        //playerGetsHitSound = Resources.Load<AudioClip>("robloxDeath");
+        playerGetsHitSound = Resources.Load<AudioClip>("playerGetHit");
         playerYouDied = Resources.Load<AudioClip>("youDied");
 
         monsterDeathSound = Resources.Load<AudioClip>("cutterDeath");
@@ -72,6 +75,12 @@ public class SoundManager : MonoBehaviour
                 break;
             case "playerDraw":
                 audrioSrc.PlayOneShot(playerDrawSound);
+                break;
+            case "maceHit":
+                audrioSrc.PlayOneShot(playerHitSound2);
+                break;
+            case "maceDraw":
+                audrioSrc.PlayOneShot(playerDrawSound2);
                 break;
             case "playerJump":
                 audrioSrc.PlayOneShot(playerJumpSound);
