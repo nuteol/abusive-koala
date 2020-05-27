@@ -37123,36 +37123,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!1 &1011024683
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!95 &972922494 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7791935578296952952, guid: 691f1a1dab553dd48a1218049397c73a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7791935579459200634}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1011024684}
-  m_Layer: 0
-  m_Name: Place (13)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1011024684
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011024683}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1524665635}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1014671899
 GameObject:
   m_ObjectHideFlags: 0
@@ -37502,36 +37478,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1249349059
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1249349060}
-  m_Layer: 0
-  m_Name: Place (12)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1249349060
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249349059}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21, y: -5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1524665635}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1302110902
 GameObject:
@@ -37950,8 +37896,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502756073}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 0.1, z: 10.050533}
-  m_LocalScale: {x: 5.36479, y: 4.311956, z: 1}
+  m_LocalPosition: {x: -0.065, y: -0.003, z: 10.050533}
+  m_LocalScale: {x: 5.8136992, y: 4.547734, z: 1}
   m_Children: []
   m_Father: {fileID: 1014671901}
   m_RootOrder: 1
@@ -38043,7 +37989,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524665633}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16, y: -0.5, z: 0.16439292}
+  m_LocalPosition: {x: 8.84, y: -1.58, z: 0.16439292}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 190823643}
@@ -38051,8 +37997,6 @@ Transform:
   - {fileID: 837018876}
   - {fileID: 1769707926}
   - {fileID: 157565854}
-  - {fileID: 1249349060}
-  - {fileID: 1011024684}
   - {fileID: 1592486374}
   - {fileID: 1778079809}
   m_Father: {fileID: 0}
@@ -38242,7 +38186,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1524665635}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1653345697
 GameObject:
@@ -39011,7 +38955,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1524665635}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1826632468
 GameObject:
@@ -51030,6 +50974,11 @@ PrefabInstance:
       propertyPath: unlockedWeapons.Array.data[0]
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7791935578296952953, guid: 691f1a1dab553dd48a1218049397c73a,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 972922494}
     - target: {fileID: 7791935578296952954, guid: 691f1a1dab553dd48a1218049397c73a,
         type: 3}
       propertyPath: hp
