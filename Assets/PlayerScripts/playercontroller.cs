@@ -90,23 +90,6 @@ public class playercontroller : MonoBehaviour
                 animator.SetBool("IsFalling", false);
                 animator.SetBool("IsJumping", false);
             }
-
-            if (Input.GetKeyDown(equip1))
-            {
-                
-                animator.SetBool("Weapon1Equipped", true);
-                animator.SetBool("Weapon2Equipped", false);
-            }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-
-            animator.SetBool("Weapon2Equipped", true);
-            animator.SetBool("Weapon1Equipped", false);
-        }
-        if (Input.GetKeyDown(attack1))
-            {
-                animator.SetTrigger("Weapon1Attack");
-            }
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
     }
 

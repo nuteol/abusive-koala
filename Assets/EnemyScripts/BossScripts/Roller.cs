@@ -163,6 +163,7 @@ public class Roller : Enemy
         else if (currentHealth <= 100 && currentHealth > 0 && currentStage == stages.halfFull)
         {
             currentStage = stages.empty;
+            animator.SetTrigger("change");
             //Boss moves faster
             idleTime = idleTime / 2;
             chargeTime = chargeTime / 2;

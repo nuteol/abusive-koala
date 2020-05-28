@@ -14,20 +14,22 @@ public class attackingscript : MonoBehaviour
     private float nextDrawTime = 0f;
     public int[] unlockedWeapons;
 
+    
     private abstract class weapon
     {
+        public Animator animator2;
         public string name;
         public float nextAttackTime = 0f;
         public int damagePaper;
         public int damageGlass;
         public int damageMetal;
         public float attackRange;
-        public abstract void weaponAttack(Transform ap, LayerMask wiep, LayerMask wieg, LayerMask wiem, LayerMask projectiles);
+        public abstract void weaponAttack(Transform ap, LayerMask wiep, LayerMask wieg, LayerMask wiem, LayerMask projectiles, Animator animator);
         public abstract void draw();
     }
     private class hand : weapon
     {
-        public override void weaponAttack(Transform ap, LayerMask wiep, LayerMask wieg, LayerMask wiem, LayerMask projectiles)
+        public override void weaponAttack(Transform ap, LayerMask wiep, LayerMask wieg, LayerMask wiem, LayerMask projectiles, Animator animator)
         {
             
         }
@@ -46,14 +48,14 @@ public class attackingscript : MonoBehaviour
             damageMetal = 0;
             attackRange = 1.4f;
         }
-        public override void weaponAttack(Transform ap, LayerMask wiep, LayerMask wieg, LayerMask wiem, LayerMask projectiles)
+        public override void weaponAttack(Transform ap, LayerMask wiep, LayerMask wieg, LayerMask wiem, LayerMask projectiles, Animator animator)
         {
             if(nextAttackTime <= Time.time)
             {
                 print("ACC");
                 SoundManager.PlaySound("playerHit");
                 //Do animation here
-                //animator.SetTrigger("Weapon1Attack");
+                animator.SetTrigger("Weapon1Attack");
                 Collider2D[] paperEnemiesToDamage = Physics2D.OverlapCircleAll(ap.position, attackRange, wiep);
                 foreach (Collider2D enemy in paperEnemiesToDamage)
                 {
@@ -77,7 +79,6 @@ public class attackingscript : MonoBehaviour
     }
     private class metalMace : weapon
     {
-
         public metalMace()
         {
             name = "Metal Mace";
@@ -86,7 +87,7 @@ public class attackingscript : MonoBehaviour
             damageMetal = 2;
             attackRange = 1.6f;
         }
-        public override void weaponAttack(Transform ap, LayerMask wiep, LayerMask wieg, LayerMask wiem, LayerMask projectiles)
+        public override void weaponAttack(Transform ap, LayerMask wiep, LayerMask wieg, LayerMask wiem, LayerMask projectiles, Animator animator)
         {
             if (nextAttackTime <= Time.time)
             {
@@ -95,7 +96,7 @@ public class attackingscript : MonoBehaviour
                 SoundManager.PlaySound("maceHit");
                 SoundManager.audrioSrc.volume = 1f;
                 //Do animation here
-                //animator.SetTrigger("Weapon1Attack");
+                animator.SetTrigger("Weapon1Attack");
                 Collider2D[] paperEnemiesToDamage = Physics2D.OverlapCircleAll(ap.position, attackRange, wiep);
                 foreach (Collider2D enemy in paperEnemiesToDamage)
                 {
@@ -134,8 +135,9 @@ public class attackingscript : MonoBehaviour
 
     IEnumerator ExecuteAttackAfterTime(float time)
     {
-        yield return new WaitForSeconds(time);
-        currentWeapon.weaponAttack(attackPos, Paper, Glass, Metal, Projectile);
+        yield return new WaitForSeconds(time);        
+        currentWeapon.weaponAttack(attackPos, Paper, Glass, Metal, Projectile, animator);
+        //animator.SetTrigger("Weapon1Attack");
     }
 
     // Start is called before the first frame update
@@ -169,6 +171,8 @@ public class attackingscript : MonoBehaviour
             print("Cardboard Cutter");
             currentWeapon = new cardboardCutter();
             currentWeapon.draw();
+            animator.SetBool("Weapon1Equipped", true);
+            animator.SetBool("Weapon2Equipped", false);
         }
         if (Input.GetKey(KeyCode.Alpha2) && currentWeapon != weapons[2] && nextDrawTime <= Time.time && weapons[2] != Hand)
         {
@@ -176,6 +180,8 @@ public class attackingscript : MonoBehaviour
             print("Metal Mace");
             currentWeapon = new metalMace();
             currentWeapon.draw();
+            animator.SetBool("Weapon2Equipped", true);
+            animator.SetBool("Weapon1Equipped", false);
         }
         if (Input.GetKey(KeyCode.X))
         {
