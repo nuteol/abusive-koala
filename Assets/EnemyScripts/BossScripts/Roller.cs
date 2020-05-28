@@ -17,7 +17,7 @@ public class Roller : Enemy
     public MoveToNextLevel state;
     public GameObject exit;
 
-    private float mahHealth = 300;
+    private float maxHealth = 300;
     private float currentHealth;
     public Image healthBar;
     public GameObject healthBarGameObject;
@@ -41,6 +41,7 @@ public class Roller : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        
         exit.SetActive(false);
         endScreen.enabled = false;
         endText.enabled = false;
@@ -49,7 +50,7 @@ public class Roller : Enemy
         //Play Animation currentstate is intro/Wait to finish
         currentState = states.idle;
         currentSwitchTime = Time.time + idleTime;
-        currentHealth = mahHealth;
+        currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         rollerT = GetComponent<Transform>();
         bosscollider = GetComponent<BoxCollider2D>();
@@ -67,6 +68,7 @@ public class Roller : Enemy
 
     void switchState()
     {
+        
         if (currentState == states.idle)
         {
             if (Random.Range(0, 2) == 1)
@@ -137,7 +139,7 @@ public class Roller : Enemy
         {
             rb.bodyType = RigidbodyType2D.Kinematic;
             rb.velocity = new Vector2(0, 0);
-            rollerT.position = new Vector3(rollerT.position.x, -0.5f, rollerT.position.z);
+            rollerT.position = new Vector3(rollerT.position.x, -2.5f, rollerT.position.z);
         }
     }
 
@@ -155,7 +157,7 @@ public class Roller : Enemy
     public override bool TakeDamage(int damage)
     {
         currentHealth -= damage;
-        healthBar.fillAmount = currentHealth / mahHealth;
+        healthBar.fillAmount = currentHealth / maxHealth;
         if (currentHealth <= 200 && currentHealth > 100 && currentStage == stages.full)
         {
             currentStage = stages.halfFull;
