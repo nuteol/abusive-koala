@@ -37,8 +37,11 @@ public class Projectile : MonoBehaviour
         }
         else if (collision.gameObject.tag.Equals("Enemy") && harmfulToMonsters)
         {
-            
             collision.gameObject.GetComponent<Enemy>().TakeDamage(10);
+            if(collision.gameObject.GetComponent<TemperedGlass>() != null)
+            {
+                collision.gameObject.GetComponent<TemperedGlass>().Incapacitate();
+            }
             Destroy(gameObject);
         }
         else if (collision.gameObject.tag.Equals("Enemy") && !harmfulToMonsters)
@@ -47,7 +50,7 @@ public class Projectile : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            
         }
     }
 }
