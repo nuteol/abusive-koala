@@ -48,21 +48,28 @@ public class TemperedGlass : Enemy
 
     void FixedUpdate()
     {
+        if (currentState == states.walking)
+        {
+            if (distance * distance < 1)
+            {
+                currentSwitchTime = Time.time;
+            }
+        }
         altitude = target.position.y - transform.position.y + 0.5f;
         distance = target.position.x - transform.position.x;
-        if (facingRight && target.position.x - transform.position.x < 0)
+        if (facingRight && target.position.x - transform.position.x < 0 && currentState != states.incapacitated && currentState != states.gettingUp)
         {
             Flip();
         }
-        else if (!facingRight && target.position.x - transform.position.x > 0)
+        else if (!facingRight && target.position.x - transform.position.x > 0 && currentState != states.incapacitated && currentState != states.gettingUp)
         {
             Flip();
         }
-        if (currentSwitchTime <= Time.time && Mathf.Sqrt(distance * distance/2 + altitude + altitude) >= 3)
+        if (currentSwitchTime <= Time.time && Mathf.Sqrt(distance * distance/2 + altitude + altitude) >= 2)
         {
             switchState();
         }
-        if(Mathf.Sqrt(distance * distance/2 + altitude + altitude) < 3)
+        if(Mathf.Sqrt(distance * distance/2 + altitude + altitude) < 2)
         {
             if(currentState != states.incapacitated && currentState != states.gettingUp)
             {

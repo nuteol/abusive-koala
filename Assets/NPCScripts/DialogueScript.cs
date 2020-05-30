@@ -9,6 +9,7 @@ public class DialogueScript : MonoBehaviour
     public string[] sentence;
     private int index;
     public float typingSpeed;
+    private IEnumerator typing;
 
     public GameObject continueButton;
     public GameObject textPanel;
@@ -32,7 +33,8 @@ public class DialogueScript : MonoBehaviour
         background.SetActive(true);
         index = 0;
         textDisplay.text = "";
-        StartCoroutine(Type());
+        typing = Type();
+        StartCoroutine(typing);
     }
 
     public void NextSentence()
@@ -74,5 +76,6 @@ public class DialogueScript : MonoBehaviour
         continueButton.SetActive(false);
         textPanel.SetActive(false);
         background.SetActive(false);
+        StopCoroutine(typing);
     }
 }

@@ -12,6 +12,7 @@ TagManager:
   - Coin
   - music
   - Enemy
+  - Wall
   layers:
   - Default
   - TransparentFX
