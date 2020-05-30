@@ -24,8 +24,10 @@ public class attackingscript : MonoBehaviour
         public int damageGlass;
         public int damageMetal;
         public float attackRange;
+        public float attackTime;
         public abstract void weaponAttack(Transform ap, LayerMask wiep, LayerMask wieg, LayerMask wiem, LayerMask projectiles, Animator animator);
         public abstract void draw();
+        public abstract void playSound();
     }
     private class hand : weapon
     {
@@ -37,6 +39,10 @@ public class attackingscript : MonoBehaviour
         {
             
         }
+        public override void playSound()
+        {
+
+        }
     }
     private class cardboardCutter : weapon
     {
@@ -47,34 +53,31 @@ public class attackingscript : MonoBehaviour
             damageGlass = 1;
             damageMetal = 0;
             attackRange = 1.4f;
+            attackTime = 0.5f;
         }
         public override void weaponAttack(Transform ap, LayerMask wiep, LayerMask wieg, LayerMask wiem, LayerMask projectiles, Animator animator)
         {
-            if(nextAttackTime <= Time.time)
+            Collider2D[] paperEnemiesToDamage = Physics2D.OverlapCircleAll(ap.position, attackRange, wiep);
+            foreach (Collider2D enemy in paperEnemiesToDamage)
             {
-                print("ACC");
-                SoundManager.PlaySound("playerHit");
-                //Do animation here
-                animator.SetTrigger("Weapon1Attack");
-                Collider2D[] paperEnemiesToDamage = Physics2D.OverlapCircleAll(ap.position, attackRange, wiep);
-                foreach (Collider2D enemy in paperEnemiesToDamage)
+                if (enemy.GetComponent<Enemy>() != null)
                 {
-                    if (enemy.GetComponent<Enemy>() != null)
-                    {
-                        enemy.GetComponent<Enemy>().TakeDamage(damagePaper);
-                    }
+                    enemy.GetComponent<Enemy>().TakeDamage(damagePaper);
                 }
-                Collider2D[] glassEnemiesToDamage = Physics2D.OverlapCircleAll(ap.position, attackRange, wieg);
-                foreach (Collider2D enemy in glassEnemiesToDamage)
-                {
-                    enemy.GetComponent<Enemy>().TakeDamage(damageGlass);
-                }
-                nextAttackTime = Time.time + 1f / 2;
+            }
+            Collider2D[] glassEnemiesToDamage = Physics2D.OverlapCircleAll(ap.position, attackRange, wieg);
+            foreach (Collider2D enemy in glassEnemiesToDamage)
+            {
+                enemy.GetComponent<Enemy>().TakeDamage(damageGlass);
             }
         }
         public override void draw()
         {
             SoundManager.PlaySound("playerDraw");
+        }
+        public override void playSound()
+        {
+            SoundManager.PlaySound("playerHit");
         }
     }
     private class metalMace : weapon
@@ -85,48 +88,45 @@ public class attackingscript : MonoBehaviour
             damagePaper = 1;
             damageGlass = 10;
             damageMetal = 2;
-            attackRange = 1.6f;
+            attackRange = 1.4f;
+            attackTime = 1.3f;
         }
         public override void weaponAttack(Transform ap, LayerMask wiep, LayerMask wieg, LayerMask wiem, LayerMask projectiles, Animator animator)
         {
-            if (nextAttackTime <= Time.time)
+            Collider2D[] paperEnemiesToDamage = Physics2D.OverlapCircleAll(ap.position, attackRange, wiep);
+            foreach (Collider2D enemy in paperEnemiesToDamage)
             {
-                print("AMM");
-                SoundManager.audrioSrc.volume = 6f;
-                SoundManager.PlaySound("maceHit");
-                SoundManager.audrioSrc.volume = 1f;
-                //Do animation here
-                animator.SetTrigger("Weapon1Attack");
-                Collider2D[] paperEnemiesToDamage = Physics2D.OverlapCircleAll(ap.position, attackRange, wiep);
-                foreach (Collider2D enemy in paperEnemiesToDamage)
+                if (enemy.GetComponent<Enemy>() != null)
                 {
-                    if (enemy.GetComponent<Enemy>() != null)
-                    {
-                        enemy.GetComponent<Enemy>().TakeDamage(damagePaper);
-                    }
+                    enemy.GetComponent<Enemy>().TakeDamage(damagePaper);
                 }
-                Collider2D[] glassEnemiesToDamage = Physics2D.OverlapCircleAll(ap.position, attackRange, wieg);
-                foreach (Collider2D enemy in glassEnemiesToDamage)
+            }
+            Collider2D[] glassEnemiesToDamage = Physics2D.OverlapCircleAll(ap.position, attackRange, wieg);
+            foreach (Collider2D enemy in glassEnemiesToDamage)
+            {
+                if (enemy.GetComponent<Enemy>() != null)
                 {
-                    if (enemy.GetComponent<Enemy>() != null)
-                    {
-                        enemy.GetComponent<Enemy>().TakeDamage(damageGlass);
-                    }
+                    enemy.GetComponent<Enemy>().TakeDamage(damageGlass);
                 }
-                Collider2D[] ProjectilesToHit = Physics2D.OverlapCircleAll(ap.position, attackRange, projectiles);
-                foreach (Collider2D projectile in ProjectilesToHit)
+            }
+            Collider2D[] ProjectilesToHit = Physics2D.OverlapCircleAll(ap.position, attackRange, projectiles);
+            foreach (Collider2D projectile in ProjectilesToHit)
+            {
+                if (projectile.GetComponent<Projectile>() != null)
                 {
-                    if (projectile.GetComponent<Projectile>() != null)
-                    {
-                        projectile.GetComponent<Projectile>().Return();
-                    }
+                    projectile.GetComponent<Projectile>().Return();
                 }
-                nextAttackTime = Time.time + 2f;
             }
         }
         public override void draw()
         {
             SoundManager.PlaySound("maceDraw");
+        }
+        public override void playSound()
+        {
+            SoundManager.audrioSrc.volume = 6f;
+            SoundManager.PlaySound("maceHit");
+            SoundManager.audrioSrc.volume = 1f;
         }
     }
     weapon currentWeapon;
@@ -166,18 +166,15 @@ public class attackingscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Alpha1) && currentWeapon != weapons[1] && nextDrawTime <= Time.time && weapons[1] != Hand)
+        if(Input.GetKey(KeyCode.Alpha1) && currentWeapon.name != "Cardboard Cutter" && nextDrawTime <= Time.time && weapons[1] != Hand)
         {
-            print("Cardboard Cutter");
             currentWeapon = new cardboardCutter();
             currentWeapon.draw();
             animator.SetBool("Weapon1Equipped", true);
             animator.SetBool("Weapon2Equipped", false);
         }
-        if (Input.GetKey(KeyCode.Alpha2) && currentWeapon != weapons[2] && nextDrawTime <= Time.time && weapons[2] != Hand)
+        if (Input.GetKey(KeyCode.Alpha2) && currentWeapon.name != "Metal Mace" && nextDrawTime <= Time.time && weapons[2] != Hand)
         {
-            
-            print("Metal Mace");
             currentWeapon = new metalMace();
             currentWeapon.draw();
             animator.SetBool("Weapon2Equipped", true);
@@ -185,11 +182,20 @@ public class attackingscript : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.X))
         {
-            if (currentWeapon != Hand)
+            if(currentWeapon.nextAttackTime <= Time.time)
             {
-                nextDrawTime = Time.time + 0.5f;
+                if (currentWeapon != Hand)
+                {
+                    nextDrawTime = Time.time + 0.5f;
+                }
+                //Ssound plays here
+                currentWeapon.playSound();
+                //Do animation here
+                animator.SetTrigger("Weapon1Attack");
+
+                StartCoroutine(ExecuteAttackAfterTime(0.4f));
+                currentWeapon.nextAttackTime = Time.time + currentWeapon.attackTime;
             }
-            StartCoroutine(ExecuteAttackAfterTime(0.4f));
         }
     }
 
