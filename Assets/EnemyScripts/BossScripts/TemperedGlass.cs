@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TemperedGlass : Enemy
@@ -7,6 +8,7 @@ public class TemperedGlass : Enemy
     private enum states { intro, idle, spinning, throwing, walking, incapacitated, gettingUp, dead };
 
     private string BossName = "Tempered Glass";
+    public TextMeshProUGUI name;
     private float maxHealth = 500;
     private float currentHealth;
 
@@ -38,6 +40,7 @@ public class TemperedGlass : Enemy
     void Start()
     {
         currentState = states.idle;
+        name.text = BossName;
         currentSwitchTime = Time.time + idleTime;
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
@@ -177,5 +180,6 @@ public class TemperedGlass : Enemy
     public override void Death()
     {
         Destroy(gameObject);
+        
     }
 }

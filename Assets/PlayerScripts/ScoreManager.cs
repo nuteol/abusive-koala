@@ -7,7 +7,8 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     public TextMeshProUGUI text;
-    int score;
+    int score = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +16,16 @@ public class ScoreManager : MonoBehaviour
         {
             instance = this;
         }
+        text.text = PlayerPrefs.GetInt("Coins").ToString();
+        score = PlayerPrefs.GetInt("Coins");
     }
 
     public void ChangeScore(int coinValue)
     {
         score += coinValue;
         text.text = score.ToString();
+        PlayerPrefs.SetInt("Coins", score);
+        //text.text = PlayerPrefsManager.coins.ToString();
     }
+
 }

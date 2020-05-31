@@ -128,6 +128,7 @@ public class playercontroller : MonoBehaviour
         SoundManager.PlaySound("playerDeath");
         rb.constraints = RigidbodyConstraints2D.FreezePosition;
         youDied.SetActive(true);
+        PlayerPrefs.SetInt("Coins", 0);
         //SoundManager.PlaySound("playerYouDied");
         StartCoroutine(ExecuteDeathAfterTime(1));
     }

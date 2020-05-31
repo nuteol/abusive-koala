@@ -7,14 +7,14 @@ public class GlassGunner : Enemy
 {
     private float maxHealth = 10;
     private float currentHealth;
-    //public Image healthBar;
+   public Image healthBar;
 
     private bool facingRight = false;
     private Rigidbody2D rb;
     private Transform enemyT;
     //public Animator animator;
 
-    //public GameObject lootDrop;
+    public GameObject lootDrop;
 
     private Transform player;
 
@@ -66,7 +66,7 @@ public class GlassGunner : Enemy
     {
         {
             currentHealth -= damage;
-            //healthBar.fillAmount = currentHealth / maxHealth;
+            healthBar.fillAmount = currentHealth / maxHealth;
             if (currentHealth <= 0)
             {
                 Death();
@@ -77,7 +77,7 @@ public class GlassGunner : Enemy
 
     public override void Death()
     {
-        //Instantiate(lootDrop, transform.position, Quaternion.identity);
+        Instantiate(lootDrop, transform.position, Quaternion.identity);
         Destroy(gameObject);
         SoundManager.PlaySound("monsterDeath");
     }
