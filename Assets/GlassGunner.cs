@@ -23,6 +23,7 @@ public class GlassGunner : Enemy
     private float altitude;
     public Transform firePoint;
     public GameObject bulletPrefab;
+    public Animator animator;
 
     public float bulletForce = 20f;
 
@@ -84,6 +85,7 @@ public class GlassGunner : Enemy
 
     void Shoot()
     {
+        animator.SetTrigger("shoot");
         nextShotTime = Time.time + 4f;
         //spawn bullet
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

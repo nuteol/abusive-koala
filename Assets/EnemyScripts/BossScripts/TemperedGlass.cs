@@ -13,7 +13,7 @@ public class TemperedGlass : Enemy
     private float maxHealth = 500;
     private float currentHealth;
     public GameObject healthBarGameObject;
-    public Image healthBar;
+    public Image healthBar;    
 
     private bool facingRight = false;
     private float xSpeed = -2;
@@ -31,6 +31,7 @@ public class TemperedGlass : Enemy
     private BoxCollider2D bosscollider;
     private Rigidbody2D rb;
     private Transform glassT;
+    public Animator animator;
 
     private Transform target;
     
@@ -80,6 +81,9 @@ public class TemperedGlass : Enemy
         {
             if(currentState != states.incapacitated && currentState != states.gettingUp)
             {
+                animator.SetBool("walking", false);
+                animator.SetBool("throw", false);
+                animator.SetBool("spinning", true);
                 currentState = states.spinning;
                 rb.velocity = new Vector2(xSpinSpeed, 0);
                 currentSwitchTime = Time.time + spinTime;
@@ -92,35 +96,43 @@ public class TemperedGlass : Enemy
         if(currentState == states.idle)
         {
             currentState = states.walking;
+            animator.SetBool("walking", true);
             currentSwitchTime = walkTime + Time.time;
             rb.velocity = new Vector2(xSpeed, 0);
         }
         else if(currentState == states.walking)
         {
             currentState = states.throwing;
+            animator.SetBool("walking", false);
+            animator.SetBool("throw", true);
             currentSwitchTime = throwTime + Time.time;
             rb.velocity = new Vector2(0, 0);
         }
         else if(currentState == states.throwing)
         {
             currentState = states.idle;
+            animator.SetBool("throw", false);
             currentSwitchTime = idleTime + Time.time;
             Shoot();
         }
         else if(currentState == states.spinning)
         {
             currentState = states.idle;
+            animator.SetBool("spinning", false);
             currentSwitchTime = idleTime + Time.time;
             rb.velocity = new Vector2(0, 0);
         }
         else if(currentState == states.incapacitated)
         {
             currentState = states.gettingUp;
+            animator.SetBool("dazzed", false);
+            animator.SetBool("wake", true);
             currentSwitchTime = getUpTime + Time.time;
         }
         else if (currentState == states.gettingUp)
         {
             currentState = states.idle;
+            animator.SetBool("wake", false);
             currentSwitchTime = idleTime + Time.time;
         }
     }
@@ -146,7 +158,7 @@ public class TemperedGlass : Enemy
         //spawn bullet
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-
+        animator.SetBool("throw", false);
         bulletRb.velocity = new Vector2(5*distance / Mathf.Sqrt(altitude * altitude + distance * distance), 5*altitude / Mathf.Sqrt(altitude * altitude + distance * distance));
         
     }
@@ -177,6 +189,10 @@ public class TemperedGlass : Enemy
 
     public void Incapacitate()
     {
+        animator.SetBool("walking", false);
+        animator.SetBool("throw", false);
+        animator.SetTrigger("fall");
+        animator.SetBool("dazzed", true);
         currentSwitchTime = Time.time + incapacitatedTime;
         currentState = states.incapacitated;
         rb.velocity = new Vector2(0, 0);
