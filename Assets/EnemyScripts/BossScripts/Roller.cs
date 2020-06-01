@@ -20,7 +20,7 @@ public class Roller : Enemy
     private float maxHealth = 300;
     private float currentHealth;
     public Image healthBar;
-    public GameObject healthBarGameObject;
+    public GameObject HealthBarGO;
 
     private stages currentStage = stages.full;
     private float idleTime = 8;
@@ -41,12 +41,11 @@ public class Roller : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        
+        HealthBarGO.SetActive(false);
         exit.SetActive(false);
         endScreen.enabled = false;
         endText.enabled = false;
         name.text = BossName;
-        healthBarGameObject.SetActive(false);
         //Play Animation currentstate is intro/Wait to finish
         currentState = states.idle;
         currentSwitchTime = Time.time + idleTime;
@@ -193,10 +192,10 @@ public class Roller : Enemy
     {
         //Death anime here
         //End death anim
-        healthBarGameObject.SetActive(false);
-        SoundManager.audrioSrc.Stop();
+        HealthBarGO.SetActive(false);
         Destroy(gameObject);
         SoundManager.PlaySound("monsterDeath");
+        SoundManager.audrioSrc.Stop();
         Debug.Log("BossDead");
         state.isDead = true;
         exit.SetActive(true);

@@ -74649,7 +74649,7 @@ MonoBehaviour:
   state: {fileID: 6994364085805664433}
   exit: {fileID: 6994364086771993932}
   healthBar: {fileID: 217034925}
-  healthBarGameObject: {fileID: 2119231562}
+  HealthBarGO: {fileID: 2119231562}
   animator: {fileID: 6994364086015891997}
 --- !u!95 &6994364086015891997
 Animator:

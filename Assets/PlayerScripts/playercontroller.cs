@@ -73,13 +73,13 @@ public class playercontroller : MonoBehaviour
                 extraJumps--;
                 animator.SetBool("IsJumping", true);
                 SoundManager.PlaySound("playerJump");
-            }
+        }
             else if(Input.GetKeyDown(KeyCode.W) && extraJumps == 0 && isGrounded)
             {
-                SoundManager.PlaySound("playerJump");
                 rb.velocity = Vector2.up * jumpForce;
                 animator.SetBool("IsJumping", true);
-            }
+                SoundManager.PlaySound("playerJump");
+        }
             if(rb.velocity.y < -5 && !isGrounded)
             {
                 animator.SetBool("IsJumping", false);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TemperedGlass : Enemy
 {
@@ -11,6 +12,8 @@ public class TemperedGlass : Enemy
     public TextMeshProUGUI name;
     private float maxHealth = 500;
     private float currentHealth;
+    public GameObject healthBarGameObject;
+    public Image healthBar;
 
     private bool facingRight = false;
     private float xSpeed = -2;
@@ -39,6 +42,7 @@ public class TemperedGlass : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        healthBarGameObject.SetActive(false);
         currentState = states.idle;
         name.text = BossName;
         currentSwitchTime = Time.time + idleTime;
@@ -160,6 +164,7 @@ public class TemperedGlass : Enemy
 
     public override bool TakeDamage(int damage)
     {
+        healthBar.fillAmount = currentHealth / maxHealth;
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
@@ -179,6 +184,9 @@ public class TemperedGlass : Enemy
 
     public override void Death()
     {
+        healthBarGameObject.SetActive(false);
+        SoundManager.PlaySound("glassCanonDeath");
+        SoundManager.audrioSrc.Stop();
         Destroy(gameObject);
         
     }

@@ -65,42 +65,53 @@ public class SoundManager : MonoBehaviour
         switch (clip)
         {
             case "1stLevelBackground":
+                audrioSrc.volume = 1f;
                 audrioSrc.PlayOneShot(backgroundMusic0);
                 break;
             case "backgroundMusic":
+                audrioSrc.volume = 1f;
                 audrioSrc.PlayOneShot(backgroundMusic1);
                 break;
 
             case "playerHit":
+                audrioSrc.volume = 1f;
                 audrioSrc.PlayOneShot(playerHitSound);
                 break;
             case "playerDraw":
+                audrioSrc.volume = 1f;
                 audrioSrc.PlayOneShot(playerDrawSound);
                 break;
             case "maceHit":
+                audrioSrc.volume = 1f;
                 audrioSrc.PlayOneShot(playerHitSound2);
                 break;
             case "maceDraw":
+                audrioSrc.volume = 1f;
                 audrioSrc.PlayOneShot(playerDrawSound2);
                 break;
             case "playerJump":
+                audrioSrc.volume = 1f;
                 audrioSrc.PlayOneShot(playerJumpSound);
-                audrioSrc.volume = 0.1f;
                 break;
             case "playerDeath":
+                audrioSrc.volume = 0.2f;
                 audrioSrc.PlayOneShot(playerDeathSound);
                 break;
             case "playerYouDied":
+                audrioSrc.volume = 1f;
                 audrioSrc.PlayOneShot(playerYouDied);
                 break;
             case "playerGetHit":
+                audrioSrc.volume = 1f;
                 audrioSrc.PlayOneShot(playerGetsHitSound);
                 break;
 
             case "monsterDeath":
+                audrioSrc.volume = 1f;
                 audrioSrc.PlayOneShot(monsterDeathSound);
                 break;
             case "glassCanonDeath":
+                audrioSrc.volume = 1f;
                 audrioSrc.PlayOneShot(glassCanonDeathSound);
                     break;
 
@@ -109,7 +120,6 @@ public class SoundManager : MonoBehaviour
                 audrioSrc.Stop();
                 audrioSrc.loop = true;
                 audrioSrc.clip = bossMusic;
-                audrioSrc.volume = 0.2f;
                 audrioSrc.Play();
                 break;
 
