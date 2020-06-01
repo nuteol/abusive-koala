@@ -109,7 +109,8 @@ public class attackingscript : MonoBehaviour
                     enemy.GetComponent<Enemy>().TakeDamage(damageGlass);
                 }
             }
-            Collider2D[] ProjectilesToHit = Physics2D.OverlapCircleAll(ap.position, attackRange, projectiles);
+            Collider2D[] ProjectilesToHit = Physics2D.OverlapCircleAll(ap.position, attackRange + 0.15f, projectiles);
+
             foreach (Collider2D projectile in ProjectilesToHit)
             {
                 if (projectile.GetComponent<Projectile>() != null)

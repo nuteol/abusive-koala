@@ -20,7 +20,18 @@ SpriteAtlas:
       readable: 0
       crunchedCompression: 0
       sRGB: 1
-    platformSettings: []
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 4
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
     packingSettings:
       serializedVersion: 2
       padding: 4
@@ -35,7 +46,8 @@ SpriteAtlas:
     - {fileID: 21300154, guid: e32afa0c7d638084c8c27ad0c7fe6e5b, type: 3}
     - {fileID: 2800000, guid: 62b0c948923b74b4ea5e3db549385ccb, type: 3}
     - {fileID: 21300188, guid: e32afa0c7d638084c8c27ad0c7fe6e5b, type: 3}
-    totalSpriteSurfaceArea: 25088
+    - {fileID: 2800000, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+    totalSpriteSurfaceArea: 33280
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -135,6 +147,38 @@ SpriteAtlas:
   - {fileID: 21300186, guid: 62b0c948923b74b4ea5e3db549385ccb, type: 3}
   - {fileID: 21300180, guid: 62b0c948923b74b4ea5e3db549385ccb, type: 3}
   - {fileID: 21300182, guid: 62b0c948923b74b4ea5e3db549385ccb, type: 3}
+  - {fileID: 21300018, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300016, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300006, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300004, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300002, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300000, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300014, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300012, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300010, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300008, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300058, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300056, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300060, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300062, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300046, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300044, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300036, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300042, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300038, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300040, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300032, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300054, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300034, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300052, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300028, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300050, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300030, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300048, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300024, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300026, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300020, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
+  - {fileID: 21300022, guid: 23b158f960074a44f8e16b0d67442ca4, type: 3}
   - {fileID: 21300188, guid: e32afa0c7d638084c8c27ad0c7fe6e5b, type: 3}
   - {fileID: 21300154, guid: e32afa0c7d638084c8c27ad0c7fe6e5b, type: 3}
   m_PackedSpriteNamesToIndex:
@@ -234,6 +278,38 @@ SpriteAtlas:
   - Tilemap-desert 1_93
   - Tilemap-desert 1_90
   - Tilemap-desert 1_91
+  - tilemap-forest 1_9
+  - tilemap-forest 1_8
+  - tilemap-forest 1_3
+  - tilemap-forest 1_2
+  - tilemap-forest 1_1
+  - tilemap-forest 1_0
+  - tilemap-forest 1_7
+  - tilemap-forest 1_6
+  - tilemap-forest 1_5
+  - tilemap-forest 1_4
+  - tilemap-forest 1_29
+  - tilemap-forest 1_28
+  - tilemap-forest 1_30
+  - tilemap-forest 1_31
+  - tilemap-forest 1_23
+  - tilemap-forest 1_22
+  - tilemap-forest 1_18
+  - tilemap-forest 1_21
+  - tilemap-forest 1_19
+  - tilemap-forest 1_20
+  - tilemap-forest 1_16
+  - tilemap-forest 1_27
+  - tilemap-forest 1_17
+  - tilemap-forest 1_26
+  - tilemap-forest 1_14
+  - tilemap-forest 1_25
+  - tilemap-forest 1_15
+  - tilemap-forest 1_24
+  - tilemap-forest 1_12
+  - tilemap-forest 1_13
+  - tilemap-forest 1_10
+  - tilemap-forest 1_11
   - Tilemap-desert_94
   - Tilemap-desert_77
   m_Tag: GapFix

@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 7649039368364951966}
   - component: {fileID: 7649039368364951967}
   - component: {fileID: 7649039368364951953}
+  - component: {fileID: 6544758390920167836}
   m_Layer: 10
   m_Name: GlassGunner
   m_TagString: Enemy
@@ -222,7 +223,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 7649039368364951962}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -251,7 +252,27 @@ MonoBehaviour:
   firePoint: {fileID: 7649039366843611725}
   bulletPrefab: {fileID: 3032003324326920077, guid: 3b0d9fc730c58c245a8b6da5b687c149,
     type: 3}
+  animator: {fileID: 6544758390920167836}
   bulletForce: 20
+--- !u!95 &6544758390920167836
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649039368364951962}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b2e42260e47975e409637ab7de5ca122, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8469106792646419418
 GameObject:
   m_ObjectHideFlags: 0
