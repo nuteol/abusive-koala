@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
 
-    public static AudioClip backgroundMusic0, playerJumpSound, playerDeathSound, playerHitSound, playerHitSound2, playerDrawSound, playerDrawSound2, monsterDeathSound, playerGetsHitSound, playerYouDied, bossMusic, backgroundMusic1;
+    public static AudioClip backgroundMusic0, playerJumpSound, playerDeathSound, playerHitSound, playerHitSound2, playerDrawSound, playerDrawSound2, monsterDeathSound, glassCanonDeathSound, playerGetsHitSound, playerYouDied, bossMusic, backgroundMusic1;
     public static AudioSource audrioSrc;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +24,7 @@ public class SoundManager : MonoBehaviour
         playerYouDied = Resources.Load<AudioClip>("youDied");
 
         monsterDeathSound = Resources.Load<AudioClip>("cutterDeath");
+        glassCanonDeathSound = Resources.Load<AudioClip>("GlassCanonDeath");
 
         bossMusic = Resources.Load<AudioClip>("bossfightloop");
 
@@ -99,6 +100,9 @@ public class SoundManager : MonoBehaviour
             case "monsterDeath":
                 audrioSrc.PlayOneShot(monsterDeathSound);
                 break;
+            case "glassCanonDeath":
+                audrioSrc.PlayOneShot(glassCanonDeathSound);
+                    break;
 
             case "bossMusic":
                 //stops all music and starts playing boss music

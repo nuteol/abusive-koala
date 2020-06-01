@@ -79,7 +79,7 @@ public class GlassGunner : Enemy
     {
         Instantiate(lootDrop, transform.position, Quaternion.identity);
         Destroy(gameObject);
-        SoundManager.PlaySound("monsterDeath");
+        SoundManager.PlaySound("glassCanonDeath"); 
     }
 
     void Shoot()

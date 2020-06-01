@@ -916,7 +916,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410242957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.67, y: -1.47, z: -10.050533}
+  m_LocalPosition: {x: -7.29, y: -1.5, z: -10.050533}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -37432,7 +37432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014671899}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.67, y: -1.47, z: -10.050533}
+  m_LocalPosition: {x: -7.29, y: -1.5, z: -10.050533}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1852354752}
@@ -37868,7 +37868,6 @@ MonoBehaviour:
   firePoint: {fileID: 1511202839}
   bulletPrefab: {fileID: 3032003324326920077, guid: 3b0d9fc730c58c245a8b6da5b687c149,
     type: 3}
-  healthBarGameObject: {fileID: 74144730}
 --- !u!1 &1301763057
 GameObject:
   m_ObjectHideFlags: 0
@@ -51453,12 +51452,12 @@ PrefabInstance:
     - target: {fileID: 7791935578296953733, guid: 691f1a1dab553dd48a1218049397c73a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.67
+      value: -7.29
       objectReference: {fileID: 0}
     - target: {fileID: 7791935578296953733, guid: 691f1a1dab553dd48a1218049397c73a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.47
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7791935578296953733, guid: 691f1a1dab553dd48a1218049397c73a,
         type: 3}
