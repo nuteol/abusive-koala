@@ -146,7 +146,9 @@ MonoBehaviour:
   healthBar: {fileID: 4778615385466969228}
   moveSpace: 2
   animator: {fileID: 4778615384082851641}
-  lootDrop: {fileID: 1094911470266595780, guid: cd4e5e6c3ad82d849ac821a18cdd7cef,
+  coinDrop: {fileID: 1094911470266595780, guid: cd4e5e6c3ad82d849ac821a18cdd7cef,
+    type: 3}
+  potionDrop: {fileID: 3493648794638526849, guid: 74c3a706ca60d7846acc0745039e89a7,
     type: 3}
 --- !u!95 &4778615384082851641
 Animator:
