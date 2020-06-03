@@ -19,5 +19,5 @@ Issue tracking - Jira
 ![enter image description here](https://i.imgur.com/kTnWran.png)
 Our team:
  - nuteol - Mantas Matijošaitis - Art, level design
- - Mr-Farty - Audrius Žalnaravičius
+ - Mr-Farty - Audrius Žalnaravičius - Game Development, Sounds, GUI
  - Symuciakas - Simas Kazakevičius
