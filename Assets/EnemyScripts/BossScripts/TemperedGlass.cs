@@ -10,7 +10,7 @@ public class TemperedGlass : Enemy
 
     private string BossName = "Tempered Glass";
     public TextMeshProUGUI name;
-    private float maxHealth = 500;
+    private float maxHealth = 150;
     private float currentHealth;
     public GameObject healthBarGameObject;
     public Image healthBar;
@@ -76,7 +76,7 @@ public class TemperedGlass : Enemy
         {
             Flip();
         }
-        if (currentSwitchTime <= Time.time && Mathf.Sqrt(distance * distance/2 + altitude + altitude) >= 2)
+        if (currentSwitchTime <= Time.time)
         {
             switchState();
         }

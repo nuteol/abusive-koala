@@ -49,10 +49,10 @@ public class attackingscript : MonoBehaviour
         public cardboardCutter()
         {
             name = "Cardboard Cutter";
-            damagePaper = 20;
+            damagePaper = 10;
             damageGlass = 1;
             damageMetal = 0;
-            attackRange = 1.4f;
+            attackRange = 1.3f;
             attackTime = 0.5f;
         }
         public override void weaponAttack(Transform ap, LayerMask wiep, LayerMask wieg, LayerMask wiem, LayerMask projectiles, Animator animator)
@@ -86,10 +86,10 @@ public class attackingscript : MonoBehaviour
         {
             name = "Metal Mace";
             damagePaper = 1;
-            damageGlass = 400;
+            damageGlass = 10;
             damageMetal = 2;
             attackRange = 1.4f;
-            attackTime = 1.3f;
+            attackTime = 1.2f;
         }
         public override void weaponAttack(Transform ap, LayerMask wiep, LayerMask wieg, LayerMask wiem, LayerMask projectiles, Animator animator)
         {

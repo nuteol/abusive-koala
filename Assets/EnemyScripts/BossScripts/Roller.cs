@@ -17,7 +17,7 @@ public class Roller : Enemy
     public MoveToNextLevel state;
     public GameObject exit;
 
-    private float maxHealth = 300;
+    private float maxHealth = 600;
     private float currentHealth;
     public Image healthBar;
     public GameObject HealthBarGO;
@@ -157,11 +157,11 @@ public class Roller : Enemy
     {
         currentHealth -= damage;
         healthBar.fillAmount = currentHealth / maxHealth;
-        if (currentHealth <= 200 && currentHealth > 100 && currentStage == stages.full)
+        if (currentHealth <= 400 && currentHealth > 200 && currentStage == stages.full)
         {
             currentStage = stages.halfFull;
         }
-        else if (currentHealth <= 100 && currentHealth > 0 && currentStage == stages.halfFull)
+        else if (currentHealth <= 200 && currentHealth > 0 && currentStage == stages.halfFull)
         {
             currentStage = stages.empty;
             animator.SetTrigger("change");
