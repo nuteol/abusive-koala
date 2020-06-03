@@ -103,7 +103,7 @@ public class playercontroller : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheckR.position, checkradius, whatIsGround) || Physics2D.OverlapCircle(groundCheckL.position, checkradius, whatIsGround);
+        isGrounded = Physics2D.OverlapCircle(groundCheckR.position, checkradius, whatIsGround) || Physics2D.OverlapCircle(groundCheckL.position, checkradius, whatIsGround) || Physics2D.OverlapCircle(groundCheckR.position, checkradius, LayerMask.GetMask("Glass")) || Physics2D.OverlapCircle(groundCheckL.position, checkradius, LayerMask.GetMask("Glass")) || Physics2D.OverlapCircle(groundCheckR.position, checkradius, LayerMask.GetMask("Paper")) || Physics2D.OverlapCircle(groundCheckL.position, checkradius, LayerMask.GetMask("Paper"));
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         rb.velocity = new Vector2(horizontalMove, rb.velocity.y);
         if(facingRight == false && horizontalMove > 0)

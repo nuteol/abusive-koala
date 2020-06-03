@@ -63185,7 +63185,7 @@ MonoBehaviour:
   exit: {fileID: 236977864}
   animator: {fileID: 1206977791}
   firePoint: {fileID: 1511202839}
-  bulletPrefab: {fileID: 3032003324326920077, guid: 3b0d9fc730c58c245a8b6da5b687c149,
+  bulletPrefab: {fileID: 3032003324326920077, guid: 6165baade0699c041a9370e07cc4dc13,
     type: 3}
 --- !u!95 &1206977791
 Animator:
