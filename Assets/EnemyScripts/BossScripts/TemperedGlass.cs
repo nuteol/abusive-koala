@@ -13,7 +13,9 @@ public class TemperedGlass : Enemy
     private float maxHealth = 500;
     private float currentHealth;
     public GameObject healthBarGameObject;
-    public Image healthBar;    
+    public Image healthBar;
+    public MoveToNextLevel state;
+    public GameObject exit;
 
     private bool facingRight = false;
     private float xSpeed = -2;
@@ -44,6 +46,7 @@ public class TemperedGlass : Enemy
     void Start()
     {
         healthBarGameObject.SetActive(false);
+        exit.SetActive(false);
         currentState = states.idle;
         name.text = BossName;
         currentSwitchTime = Time.time + idleTime;
@@ -180,9 +183,8 @@ public class TemperedGlass : Enemy
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            
+            //MoveToNextLevel.End();
             Death();
-
         }
         return (currentHealth <= 0);
     }
@@ -203,7 +205,9 @@ public class TemperedGlass : Enemy
         healthBarGameObject.SetActive(false);
         SoundManager.PlaySound("glassCanonDeath");
         SoundManager.audrioSrc.Stop();
+        state.isDead = true;
         Destroy(gameObject);
+        exit.SetActive(true);
         
     }
 }

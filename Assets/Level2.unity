@@ -554,6 +554,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextSceneLoad: 0
   isDead: 0
+  EndScreen: {fileID: 307436052}
+  endText: {fileID: 906015858}
 --- !u!61 &280501802
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -758,8 +760,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -221, y: 45.656}
-  m_SizeDelta: {x: 2495.9, y: 1052.8}
+  m_AnchoredPosition: {x: 0.0099945, y: -0.0012131}
+  m_SizeDelta: {x: 1600, y: 723.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &307436052
 MonoBehaviour:
@@ -779,7 +781,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 169cea376cfb0ee47b42a38f4c036311, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a4daf0e223c55c7409cb6b72da228f0d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -787,7 +789,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
 --- !u!222 &307436053
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1963,7 +1965,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 224.4, y: -0}
+  m_AnchoredPosition: {x: 0, y: 166}
   m_SizeDelta: {x: 1594.7, y: 457.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &906015858
@@ -1984,11 +1986,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Oww snap!
-
-    You did it, you killed him.
-
-    Nice.'
+  m_text: "Congratulations! You've won! \nBut...\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -63183,6 +63181,8 @@ MonoBehaviour:
   name: {fileID: 1200568601}
   healthBarGameObject: {fileID: 645111559}
   healthBar: {fileID: 2020392249}
+  state: {fileID: 280501801}
+  exit: {fileID: 236977864}
   animator: {fileID: 1206977791}
   firePoint: {fileID: 1511202839}
   bulletPrefab: {fileID: 3032003324326920077, guid: 3b0d9fc730c58c245a8b6da5b687c149,
@@ -78584,6 +78584,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791935579039290851, guid: 691f1a1dab553dd48a1218049397c73a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.327
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791935579131855184, guid: 691f1a1dab553dd48a1218049397c73a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.323
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691f1a1dab553dd48a1218049397c73a, type: 3}
