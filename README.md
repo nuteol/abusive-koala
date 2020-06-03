@@ -20,4 +20,4 @@ Issue tracking - Jira
 Our team:
  - nuteol - Mantas Matijošaitis - Art, level design
  - Mr-Farty - Audrius Žalnaravičius - Game Development, Sounds, GUI
- - Symuciakas - Simas Kazakevičius
+ - Symuciakas - Simas Kazakevičius - Scrum masster, Game Development (Back-End)
