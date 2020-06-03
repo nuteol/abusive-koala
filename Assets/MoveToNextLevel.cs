@@ -57,7 +57,6 @@ public class MoveToNextLevel : MonoBehaviour
     IEnumerator ExampleCoroutine()
     {
         SoundManager.PlaySound("Roundabout");
-        yield return new WaitForSeconds(45);
         EndScreen.enabled = true;
         endText.enabled = true;
         yield return new WaitForSeconds(10);
