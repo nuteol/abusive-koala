@@ -86,7 +86,7 @@ public class attackingscript : MonoBehaviour
         {
             name = "Metal Mace";
             damagePaper = 1;
-            damageGlass = 1000;
+            damageGlass = 10;
             damageMetal = 2;
             attackRange = 1.4f;
             attackTime = 1.2f;
