@@ -555,6 +555,7 @@ MonoBehaviour:
   nextSceneLoad: 0
   isDead: 0
   EndScreen: {fileID: 307436052}
+  endText: {fileID: 906015858}
 --- !u!61 &280501802
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -769,7 +770,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307436050}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -1964,7 +1965,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 224.4, y: -0}
+  m_AnchoredPosition: {x: 0, y: 166}
   m_SizeDelta: {x: 1594.7, y: 457.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &906015858
@@ -1985,11 +1986,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Oww snap!
-
-    You did it, you killed him.
-
-    Nice.'
+  m_text: "Congratulations! You've won! \nBut...\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

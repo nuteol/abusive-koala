@@ -10,12 +10,15 @@ public class MoveToNextLevel : MonoBehaviour
     public int nextSceneLoad;
     public bool isDead = false;
     public Image EndScreen;
+    public TextMeshProUGUI endText;
+    private bool triggered = false;
 
 
     void Start()
     {
         nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
         EndScreen.enabled = false;
+        endText.enabled = false;
     }
 
 
@@ -27,10 +30,11 @@ public class MoveToNextLevel : MonoBehaviour
         {
             if (other.gameObject.tag == "Avatar")
             {
-                if (SceneManager.GetActiveScene().buildIndex == 3) /* < Change this int value to whatever your
+                if (SceneManager.GetActiveScene().buildIndex == 3 && !triggered) /* < Change this int value to whatever your
                                                                    last level build index is on your
                                                                    build settings */
                 {
+                    triggered = true;
                     Debug.Log("You Completed ALL Levels");
                     StartCoroutine(ExampleCoroutine());
                     
@@ -53,8 +57,9 @@ public class MoveToNextLevel : MonoBehaviour
     IEnumerator ExampleCoroutine()
     {
         SoundManager.PlaySound("Roundabout");
-        yield return new WaitForSeconds(44);
+        yield return new WaitForSeconds(45);
         EndScreen.enabled = true;
+        endText.enabled = true;
         yield return new WaitForSeconds(10);
         SceneManager.LoadScene(0);
     }
