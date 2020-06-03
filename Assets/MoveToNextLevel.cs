@@ -1,21 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class MoveToNextLevel : MonoBehaviour
 {
     public int nextSceneLoad;
     public bool isDead = false;
+    public Image EndScreen;
 
 
     void Start()
     {
         nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
+        EndScreen.enabled = false;
     }
+
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+
+        
         if (isDead == true)
         {
             if (other.gameObject.tag == "Avatar")
@@ -25,7 +32,8 @@ public class MoveToNextLevel : MonoBehaviour
                                                                    build settings */
                 {
                     Debug.Log("You Completed ALL Levels");
-
+                    StartCoroutine(ExampleCoroutine());
+                    
                     //Show Win Screen or Somethin.
                 }
                 else
@@ -41,5 +49,13 @@ public class MoveToNextLevel : MonoBehaviour
                 }
             }
         }
+    }
+    IEnumerator ExampleCoroutine()
+    {
+        SoundManager.PlaySound("Roundabout");
+        yield return new WaitForSeconds(44);
+        EndScreen.enabled = true;
+        yield return new WaitForSeconds(10);
+        SceneManager.LoadScene(0);
     }
 }

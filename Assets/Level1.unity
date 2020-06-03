@@ -81938,6 +81938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextSceneLoad: 0
   isDead: 0
+  EndScreen: {fileID: 1175708071}
 --- !u!1 &6994364085805664435
 GameObject:
   m_ObjectHideFlags: 0

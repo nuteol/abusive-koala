@@ -5,14 +5,14 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
 
-    public static AudioClip backgroundMusic0, playerJumpSound, playerDeathSound, playerHitSound, playerHitSound2, playerDrawSound, playerDrawSound2, monsterDeathSound, glassCanonDeathSound, playerGetsHitSound, playerYouDied, bossMusic, backgroundMusic1;
+    public static AudioClip roundabout,backgroundMusic0, playerJumpSound, playerDeathSound, playerHitSound, playerHitSound2, playerDrawSound, playerDrawSound2, monsterDeathSound, glassCanonDeathSound, playerGetsHitSound, playerYouDied, bossMusic, backgroundMusic1;
     public static AudioSource audrioSrc;
     // Start is called before the first frame update
     void Start()
     {
         backgroundMusic0 = Resources.Load<AudioClip>("BackgroundMusicTunnels");
         backgroundMusic1 = Resources.Load<AudioClip>("background-loop");
-
+        roundabout = Resources.Load<AudioClip>("Roundabout");
         playerHitSound = Resources.Load<AudioClip>("swordHit");
         playerDrawSound = Resources.Load<AudioClip>("swordDraw");
         playerHitSound2 = Resources.Load<AudioClip>("maceSwing");
@@ -121,6 +121,12 @@ public class SoundManager : MonoBehaviour
                 audrioSrc.loop = true;
                 audrioSrc.clip = bossMusic;
                 audrioSrc.Play();
+                break;
+            case "Roundabout":
+                //stops all music and starts playing end music
+                audrioSrc.Stop();
+                audrioSrc.volume = 1f;
+                audrioSrc.PlayOneShot(roundabout);
                 break;
 
         }
