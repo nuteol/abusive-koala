@@ -27,5 +27,9 @@ public class ScoreManager : MonoBehaviour
         PlayerPrefs.SetInt("Coins", score);
         //text.text = PlayerPrefsManager.coins.ToString();
     }
+    public void ChangeHp(int healthValue)
+    {
+        playercontroller.addHp(healthValue);
+    }
 
 }

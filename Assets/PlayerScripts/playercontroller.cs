@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class playercontroller : MonoBehaviour
 {
     public int maxHearts = 3;
-    public int currentHearts;
+    public static int currentHearts;
     public HealthBar hp;
 
     private bool isCoroutineExecuting = false;
@@ -143,7 +143,10 @@ public class playercontroller : MonoBehaviour
             ExecuteDeath();
         }
     }
-
+    public static void addHp(int value)
+    {
+        currentHearts += value;
+    }
     public void TakeDamage(Transform enemyT)
     {
         if(nextDamageTime <= Time.time)

@@ -16,7 +16,8 @@ public class CardboardCunt : Enemy
     private float patrolCenter;
     public Animator animator;
 
-    public GameObject lootDrop;
+    public GameObject coinDrop;
+    public GameObject potionDrop;
 
     // Start is called before the first frame update
     void Start()
@@ -79,7 +80,17 @@ public class CardboardCunt : Enemy
 
     public override void Death()
     {
-        Instantiate(lootDrop, transform.position, Quaternion.identity);
+        
+        //if(Random.Range(0, 1) == 1)
+        //{
+            Instantiate(coinDrop, transform.position, Quaternion.identity);
+        //}
+        
+        //else
+        //{
+        //    Instantiate(potionDrop, transform.position, Quaternion.identity);
+        //}
+          
         Destroy(gameObject);
         SoundManager.PlaySound("monsterDeath");
     }

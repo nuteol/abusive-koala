@@ -30,9 +30,7 @@ public class MoveToNextLevel : MonoBehaviour
         {
             if (other.gameObject.tag == "Avatar")
             {
-                if (SceneManager.GetActiveScene().buildIndex == 3 && !triggered) /* < Change this int value to whatever your
-                                                                   last level build index is on your
-                                                                   build settings */
+                if (SceneManager.GetActiveScene().buildIndex == 3 && !triggered) 
                 {
                     triggered = true;
                     Debug.Log("You Completed ALL Levels");
@@ -45,6 +43,10 @@ public class MoveToNextLevel : MonoBehaviour
                     Debug.Log("You moved to the next level");
                     //Move to next level
                     SceneManager.LoadScene(nextSceneLoad);
+                    if(PlayerPrefs.GetInt("Coins") >= 2)
+                    {
+                        PlayerPrefs.SetInt("Coins", 17);
+                    }
 
                     if (nextSceneLoad > PlayerPrefs.GetInt("levelAt"))
                     {
