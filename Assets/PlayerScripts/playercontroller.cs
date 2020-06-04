@@ -206,6 +206,7 @@ public class playercontroller : MonoBehaviour
     private void Death()
     {
         //GUI Transition
+        PlayerPrefs.SetInt("Coins", 0);
         SceneManager.LoadScene(currentScene);
     }
 }
