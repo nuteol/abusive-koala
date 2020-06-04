@@ -6,6 +6,7 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
+   // public playercontroller pk;
     public TextMeshProUGUI text;
     int score = 0;
 
@@ -29,7 +30,8 @@ public class ScoreManager : MonoBehaviour
     }
     public void ChangeHp(int healthValue)
     {
-        playercontroller.addHp(healthValue);
+        //pk.addHp(healthValue);
+        playercontroller.instance.addHp(healthValue);
     }
 
 }

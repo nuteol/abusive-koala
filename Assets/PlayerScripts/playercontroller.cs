@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class playercontroller : MonoBehaviour
 {
     public int maxHearts = 3;
-    public static int currentHearts;
+    public int currentHearts;
     public HealthBar hp;
+    public static playercontroller instance;
 
     private bool isCoroutineExecuting = false;
     private Rigidbody2D rb;
@@ -43,7 +44,10 @@ public class playercontroller : MonoBehaviour
         extraJumps = extraJumpValue;
         currentHearts = maxHearts;
         hp.SetMaxHealth(maxHearts);
-
+        if (instance == null)
+        {
+            instance = this;
+        }
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         coll = GetComponent<Collider2D>();
@@ -143,9 +147,18 @@ public class playercontroller : MonoBehaviour
             ExecuteDeath();
         }
     }
-    public static void addHp(int value)
+    public void addHp(int value)
     {
-        currentHearts += value;
+        if(currentHearts + value > maxHearts)
+        {
+            print("fullhp");
+        }
+        else
+        {
+            currentHearts += value;
+            hp.SetHealth(currentHearts);
+        }
+        
     }
     public void TakeDamage(Transform enemyT)
     {

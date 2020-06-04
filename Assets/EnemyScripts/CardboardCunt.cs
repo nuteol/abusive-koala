@@ -80,17 +80,17 @@ public class CardboardCunt : Enemy
 
     public override void Death()
     {
-        
-        //if(Random.Range(0, 1) == 1)
+
+        //if (Random.Range(0, 1) == 1)
         //{
             Instantiate(coinDrop, transform.position, Quaternion.identity);
         //}
-        
+
         //else
         //{
-        //    Instantiate(potionDrop, transform.position, Quaternion.identity);
+            //Instantiate(potionDrop, transform.position, Quaternion.identity);
         //}
-          
+
         Destroy(gameObject);
         SoundManager.PlaySound("monsterDeath");
     }

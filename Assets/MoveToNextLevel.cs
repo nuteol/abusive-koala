@@ -43,9 +43,9 @@ public class MoveToNextLevel : MonoBehaviour
                     Debug.Log("You moved to the next level");
                     //Move to next level
                     SceneManager.LoadScene(nextSceneLoad);
-                    if(PlayerPrefs.GetInt("Coins") >= 2)
+                    if(PlayerPrefs.GetInt("Coins") >= 24)
                     {
-                        PlayerPrefs.SetInt("Coins", 17);
+                        PlayerPrefs.SetInt("Coins", 24);
                     }
 
                     if (nextSceneLoad > PlayerPrefs.GetInt("levelAt"))
