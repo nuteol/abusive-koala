@@ -44,7 +44,8 @@ public class DialogueScript : MonoBehaviour
         {
             index++;
             textDisplay.text = "";
-            StartCoroutine(Type());
+            typing = Type();
+            StartCoroutine(typing);
         }
         else
         {

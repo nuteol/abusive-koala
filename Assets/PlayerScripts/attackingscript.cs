@@ -167,14 +167,14 @@ public class attackingscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Alpha1) && currentWeapon.name != "Cardboard Cutter" && nextDrawTime <= Time.time && weapons[1] != Hand)
+        if(Input.GetKey(KeyCode.Alpha1) && currentWeapon.name != "Cardboard Cutter" && nextDrawTime <= Time.time && weapons[1] != Hand && !Input.GetKey(KeyCode.Alpha2))
         {
             currentWeapon = new cardboardCutter();
             currentWeapon.draw();
             animator.SetBool("Weapon1Equipped", true);
             animator.SetBool("Weapon2Equipped", false);
         }
-        if (Input.GetKey(KeyCode.Alpha2) && currentWeapon.name != "Metal Mace" && nextDrawTime <= Time.time && weapons[2] != Hand)
+        if (Input.GetKey(KeyCode.Alpha2) && currentWeapon.name != "Metal Mace" && nextDrawTime <= Time.time && weapons[2] != Hand && !Input.GetKey(KeyCode.Alpha1))
         {
             currentWeapon = new metalMace();
             currentWeapon.draw();
