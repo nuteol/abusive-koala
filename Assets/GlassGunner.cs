@@ -61,6 +61,10 @@ public class GlassGunner : Enemy
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
+
+        Vector3 HpScaler = healthBar.gameObject.transform.localScale;
+        HpScaler.x *= -1;
+        healthBar.gameObject.transform.localScale = HpScaler;
     }
 
     public override bool TakeDamage(int damage)
