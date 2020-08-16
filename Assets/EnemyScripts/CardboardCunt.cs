@@ -47,12 +47,21 @@ public class CardboardCunt : Enemy
             Vector3 Scaler = transform.localScale;
             Scaler.x *= -1;
             enemyT.localScale = Scaler;
+
+            Vector3 HpScaler = healthBar.gameObject.transform.localScale;
+            HpScaler.x *= -1;
+            healthBar.gameObject.transform.localScale = HpScaler;
         }
         else if (enemyT.position.x < patrolCenter - moveSpace / 2 && !moveRight)
         {
             Vector3 Scaler = transform.localScale;
             Scaler.x *= -1;
             enemyT.localScale = Scaler;
+
+            Vector3 HpScaler = healthBar.gameObject.transform.localScale;
+            HpScaler.x *= -1;
+            healthBar.gameObject.transform.localScale = HpScaler;
+
             moveRight = true;
         }
     }
